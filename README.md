@@ -14,7 +14,7 @@ To search for player(s) by name(s) :
 ```java
     public static final void main(String[] args) throws PubgClientException {
         PubgClient pubgClient = new PubgClient();
-        List<Player> players = pubgClient.getPlayers("<shard>", "<playerName>");
+        List<Player> players = pubgClient.getPlayersByNames("<shard>", "<playerName>");
         players.forEach(player -> LOGGER.info(player.getPlayerAttributes().getName()));
     }
 ```

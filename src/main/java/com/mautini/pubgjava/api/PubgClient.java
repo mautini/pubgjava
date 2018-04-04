@@ -6,8 +6,9 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
+import com.mautini.pubgjava.model.MultiplePlayerResponse;
 import com.mautini.pubgjava.model.Player;
-import com.mautini.pubgjava.model.PlayerResponse;
+import com.mautini.pubgjava.model.SinglePlayerResponse;
 import com.mautini.pubgjava.util.RetrofitUtil;
 import com.typesafe.config.ConfigFactory;
 import okhttp3.OkHttpClient;
@@ -71,10 +72,27 @@ public class PubgClient {
         pubgInterface = retrofit.create(PubgInterface.class);
     }
 
-    public List<Player> getPlayers(String shard, String... players) throws PubgClientException {
-        String playersString = Arrays.stream(players).collect(Collectors.joining(","));
-        PlayerResponse playerResponse = RetrofitUtil.getResponse(pubgInterface.getPlayers(shard, playersString));
+    public List<Player> getPlayersByNames(String shard, String... playersNames) throws PubgClientException {
+        String players = Arrays.stream(playersNames).collect(Collectors.joining(","));
 
-        return playerResponse.getPlayers();
+        MultiplePlayerResponse multiplePlayerResponse =
+                RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard, players));
+
+        return multiplePlayerResponse.getPlayers();
+    }
+
+    public List<Player> getPlayersByIds(String shard, String... playerIds) throws PubgClientException {
+        String players = Arrays.stream(playerIds).collect(Collectors.joining(","));
+
+        MultiplePlayerResponse multiplePlayerResponse =
+                RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard, players));
+
+        return multiplePlayerResponse.getPlayers();
+    }
+
+    public Player getPlayer(String shard, String id) throws PubgClientException {
+        SinglePlayerResponse singlePlayerResponse = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
+
+        return singlePlayerResponse.getPlayer();
     }
 }

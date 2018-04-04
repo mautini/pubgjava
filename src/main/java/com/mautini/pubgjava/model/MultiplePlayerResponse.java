@@ -5,12 +5,12 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerResponse {
+public class MultiplePlayerResponse {
 
     @SerializedName("data")
     private List<Player> players;
 
-    public PlayerResponse() {
+    public MultiplePlayerResponse() {
         players = new ArrayList<>();
     }
 
