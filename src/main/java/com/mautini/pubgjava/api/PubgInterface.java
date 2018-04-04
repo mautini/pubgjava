@@ -1,9 +1,9 @@
 package com.mautini.pubgjava.api;
 
-import com.mautini.pubgjava.model.Player;
-import com.mautini.pubgjava.model.Status;
 import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.DataListHolder;
+import com.mautini.pubgjava.model.player.Player;
+import com.mautini.pubgjava.model.status.Status;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;

@@ -1,4 +1,4 @@
-package com.mautini.pubgjava.model;
+package com.mautini.pubgjava.model.status;
 
 import java.time.ZonedDateTime;
 

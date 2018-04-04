@@ -1,4 +1,4 @@
-package com.mautini.pubgjava.model;
+package com.mautini.pubgjava.model.status;
 
 import com.google.gson.annotations.SerializedName;
 import com.mautini.pubgjava.model.generic.Entity;

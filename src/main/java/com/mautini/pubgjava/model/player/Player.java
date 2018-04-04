@@ -1,6 +1,7 @@
-package com.mautini.pubgjava.model;
+package com.mautini.pubgjava.model.player;
 
 import com.google.gson.annotations.SerializedName;
+import com.mautini.pubgjava.model.Relationships;
 import com.mautini.pubgjava.model.generic.Entity;
 
 public class Player extends Entity {
