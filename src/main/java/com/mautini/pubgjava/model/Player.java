@@ -8,6 +8,8 @@ public class Player extends Entity {
     @SerializedName("attributes")
     private PlayerAttributes playerAttributes;
 
+    private Relationships relationships;
+
     public Player() {
         super();
     }
@@ -18,5 +20,13 @@ public class Player extends Entity {
 
     public void setPlayerAttributes(PlayerAttributes playerAttributes) {
         this.playerAttributes = playerAttributes;
+    }
+
+    public Relationships getRelationships() {
+        return relationships;
+    }
+
+    public void setRelationships(Relationships relationships) {
+        this.relationships = relationships;
     }
 }
