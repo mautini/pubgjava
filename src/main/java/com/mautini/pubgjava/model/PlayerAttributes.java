@@ -1,7 +1,6 @@
 package com.mautini.pubgjava.model;
 
 import java.time.ZonedDateTime;
-import java.util.Date;
 
 public class PlayerAttributes {
 
@@ -14,8 +13,6 @@ public class PlayerAttributes {
     private String shardId;
 
     private String titleId;
-
-    private Date updatedAt;
 
     public PlayerAttributes() {
     }
@@ -58,13 +55,5 @@ public class PlayerAttributes {
 
     public void setTitleId(String titleId) {
         this.titleId = titleId;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
     }
 }
