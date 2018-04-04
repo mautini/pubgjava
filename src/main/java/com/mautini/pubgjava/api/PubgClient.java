@@ -9,10 +9,10 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
-import com.mautini.pubgjava.model.Match;
 import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
+import com.mautini.pubgjava.model.match.Match;
 import com.mautini.pubgjava.model.player.Player;
 import com.mautini.pubgjava.model.status.Status;
 import com.mautini.pubgjava.util.RetrofitUtil;
@@ -122,9 +122,9 @@ public class PubgClient {
     }
 
     public Player getPlayer(String shard, String id) throws PubgClientException {
-        DataHolder<Player> singleEntityResponse = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
+        DataHolder<Player> playerDataHolder = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
 
-        return singleEntityResponse.getData();
+        return playerDataHolder.getData();
     }
 
     /**
@@ -132,5 +132,11 @@ public class PubgClient {
      */
     public Status getStatus() throws PubgClientException {
         return RetrofitUtil.getResponse(pubgInterface.getStatus()).getData();
+    }
+
+    public Match getMatch(String shard, String id) throws PubgClientException {
+        DataHolder<Match> matchDataHolder = RetrofitUtil.getResponse(pubgInterface.getMatch(shard, id));
+
+        return matchDataHolder.getData();
     }
 }

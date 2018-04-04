@@ -1,6 +1,7 @@
 package com.mautini.pubgjava.model;
 
 import com.mautini.pubgjava.model.generic.DataListHolder;
+import com.mautini.pubgjava.model.match.Match;
 
 public class Relationships {
 
