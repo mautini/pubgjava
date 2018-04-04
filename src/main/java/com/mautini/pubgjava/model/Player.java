@@ -1,33 +1,15 @@
 package com.mautini.pubgjava.model;
 
 import com.google.gson.annotations.SerializedName;
+import com.mautini.pubgjava.model.generic.Entity;
 
-public class Player {
-
-    private String type;
-
-    private String id;
+public class Player extends Entity {
 
     @SerializedName("attributes")
     private PlayerAttributes playerAttributes;
 
     public Player() {
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        super();
     }
 
     public PlayerAttributes getPlayerAttributes() {

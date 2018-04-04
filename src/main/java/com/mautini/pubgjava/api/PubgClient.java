@@ -2,13 +2,18 @@ package com.mautini.pubgjava.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
-import com.mautini.pubgjava.model.MultiplePlayerResponse;
 import com.mautini.pubgjava.model.Player;
-import com.mautini.pubgjava.model.SinglePlayerResponse;
+import com.mautini.pubgjava.model.generic.Entity;
+import com.mautini.pubgjava.model.generic.MultipleEntityResponse;
+import com.mautini.pubgjava.model.generic.SingleEntityResponse;
+import com.mautini.pubgjava.util.CollectionsUtil;
 import com.mautini.pubgjava.util.RetrofitUtil;
 import com.typesafe.config.ConfigFactory;
 import okhttp3.OkHttpClient;
@@ -60,6 +65,18 @@ public class PubgClient {
                         return ZonedDateTime.parse(in.nextString());
                     }
                 })
+                .registerTypeAdapter(Entity.class, (JsonDeserializer<Entity>) (json, typeOfT, context) -> {
+                    JsonObject jsonObject = json.getAsJsonObject();
+
+                    JsonElement jsonType = jsonObject.get("type");
+                    String type = jsonType.getAsString();
+
+                    if ("player".equals(type)) {
+                        return context.deserialize(json, Player.class);
+                    }
+
+                    return null;
+                })
                 .create();
 
         // Build the interface to the API
@@ -75,24 +92,29 @@ public class PubgClient {
     public List<Player> getPlayersByNames(String shard, String... playersNames) throws PubgClientException {
         String players = Arrays.stream(playersNames).collect(Collectors.joining(","));
 
-        MultiplePlayerResponse multiplePlayerResponse =
+        MultipleEntityResponse multipleEntityResponse =
                 RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard, players));
 
-        return multiplePlayerResponse.getPlayers();
+        // Keep only the players in the response (cast for the client)
+        return CollectionsUtil.filterType(multipleEntityResponse.getEntities(), Player.class);
     }
 
     public List<Player> getPlayersByIds(String shard, String... playerIds) throws PubgClientException {
         String players = Arrays.stream(playerIds).collect(Collectors.joining(","));
 
-        MultiplePlayerResponse multiplePlayerResponse =
+        MultipleEntityResponse multipleEntityResponse =
                 RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard, players));
 
-        return multiplePlayerResponse.getPlayers();
+        return CollectionsUtil.filterType(multipleEntityResponse.getEntities(), Player.class);
     }
 
     public Player getPlayer(String shard, String id) throws PubgClientException {
-        SinglePlayerResponse singlePlayerResponse = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
+        SingleEntityResponse singleEntityResponse = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
 
-        return singlePlayerResponse.getPlayer();
+        if (!(singleEntityResponse.getEntity() instanceof Player)) {
+            throw new PubgClientException("Response must be of type player");
+        }
+
+        return (Player) singleEntityResponse.getEntity();
     }
 }
