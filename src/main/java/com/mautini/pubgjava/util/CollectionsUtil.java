@@ -5,7 +5,12 @@ import java.util.stream.Collectors;
 
 public class CollectionsUtil {
 
-    public static <T> List<T> filterType(List<? extends Object> objects, Class<T> filterClass) {
+    /**
+     * Filter in the list the elements of the provided class
+     *
+     * @return the list of elements in the list of type filterClass
+     */
+    public static <T> List<T> filterType(List<?> objects, Class<T> filterClass) {
         return objects.stream()
                 .filter(filterClass::isInstance)
                 .map(filterClass::cast)
