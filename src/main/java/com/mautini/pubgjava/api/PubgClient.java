@@ -11,6 +11,7 @@ import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
 import com.mautini.pubgjava.model.Match;
 import com.mautini.pubgjava.model.Player;
+import com.mautini.pubgjava.model.Status;
 import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
@@ -44,11 +45,19 @@ public class PubgClient {
         OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .addInterceptor(
                         chain -> {
-                            Request request = chain.request().newBuilder()
-                                    .addHeader("Accept", ACCEPT_HEADER)
-                                    .addHeader("Authorization", "Bearer " + apiKey)
-                                    .build();
-                            return chain.proceed(request);
+                            Request request = chain.request();
+
+                            Request.Builder builder = request.newBuilder()
+                                    .addHeader("Accept", ACCEPT_HEADER);
+
+                            // Get all the custom header (using the @ annotation)
+                            List<String> customAnnotations = chain.request().headers().values("@");
+                            if (customAnnotations.contains("Auth")) {
+                                builder.addHeader("Authorization", "Bearer " + apiKey);
+                            }
+                            builder.removeHeader("@");
+
+                            return chain.proceed(builder.build());
                         }).build();
 
 
@@ -76,6 +85,8 @@ public class PubgClient {
                             return context.deserialize(json, Player.class);
                         case "match":
                             return context.deserialize(json, Match.class);
+                        case "status":
+                            return context.deserialize(json, Status.class);
                         default:
                             return null;
                     }
@@ -114,5 +125,12 @@ public class PubgClient {
         DataHolder<Player> singleEntityResponse = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
 
         return singleEntityResponse.getData();
+    }
+
+    /**
+     * Return the status of the API
+     */
+    public Status getStatus() throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getStatus()).getData();
     }
 }
