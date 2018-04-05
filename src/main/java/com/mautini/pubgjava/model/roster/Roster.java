@@ -8,6 +8,9 @@ public class Roster extends Entity {
     @SerializedName("attributes")
     private RosterAttributes rosterAttributes;
 
+    @SerializedName("relationships")
+    private RosterRelationships rosterRelationships;
+
     public Roster() {
     }
 

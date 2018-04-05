@@ -14,6 +14,7 @@ import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
 import com.mautini.pubgjava.model.match.Match;
 import com.mautini.pubgjava.model.match.MatchResponse;
+import com.mautini.pubgjava.model.participant.Participant;
 import com.mautini.pubgjava.model.player.Player;
 import com.mautini.pubgjava.model.roster.Roster;
 import com.mautini.pubgjava.model.status.Status;
@@ -91,6 +92,8 @@ public class PubgClient {
                             return context.deserialize(json, Status.class);
                         case "roster":
                             return context.deserialize(json, Roster.class);
+                        case "participant":
+                            return context.deserialize(json, Participant.class);
                         default:
                             return null;
                     }
