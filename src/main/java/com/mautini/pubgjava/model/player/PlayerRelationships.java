@@ -1,13 +1,13 @@
-package com.mautini.pubgjava.model;
+package com.mautini.pubgjava.model.player;
 
 import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.match.Match;
 
-public class Relationships {
+public class PlayerRelationships {
 
     private DataListHolder<Match> matches;
 
-    public Relationships() {
+    public PlayerRelationships() {
     }
 
     public DataListHolder<Match> getMatches() {

@@ -1,7 +1,6 @@
 package com.mautini.pubgjava.model.player;
 
 import com.google.gson.annotations.SerializedName;
-import com.mautini.pubgjava.model.Relationships;
 import com.mautini.pubgjava.model.generic.Entity;
 
 public class Player extends Entity {
@@ -9,7 +8,8 @@ public class Player extends Entity {
     @SerializedName("attributes")
     private PlayerAttributes playerAttributes;
 
-    private Relationships relationships;
+    @SerializedName("relationships")
+    private PlayerRelationships playerRelationships;
 
     public Player() {
         super();
@@ -23,11 +23,11 @@ public class Player extends Entity {
         this.playerAttributes = playerAttributes;
     }
 
-    public Relationships getRelationships() {
-        return relationships;
+    public PlayerRelationships getPlayerRelationships() {
+        return playerRelationships;
     }
 
-    public void setRelationships(Relationships relationships) {
-        this.relationships = relationships;
+    public void setPlayerRelationships(PlayerRelationships playerRelationships) {
+        this.playerRelationships = playerRelationships;
     }
 }

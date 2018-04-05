@@ -2,7 +2,7 @@ package com.mautini.pubgjava.api;
 
 import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.DataListHolder;
-import com.mautini.pubgjava.model.match.Match;
+import com.mautini.pubgjava.model.match.MatchResponse;
 import com.mautini.pubgjava.model.player.Player;
 import com.mautini.pubgjava.model.status.Status;
 import retrofit2.Call;
@@ -34,5 +34,5 @@ public interface PubgInterface {
 
     @Headers("@: Auth")
     @GET("/shards/{shard}/matches/{id}")
-    Call<DataHolder<Match>> getMatch(@Path("shard") String shard, @Path("id") String id);
+    Call<MatchResponse> getMatch(@Path("shard") String shard, @Path("id") String id);
 }

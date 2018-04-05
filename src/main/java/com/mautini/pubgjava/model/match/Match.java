@@ -8,6 +8,9 @@ public class Match extends Entity {
     @SerializedName("attributes")
     private MatchAttributes matchAttributes;
 
+    @SerializedName("relationships")
+    private MatchRelationships matchRelationships;
+
     public Match() {
     }
 
@@ -17,5 +20,13 @@ public class Match extends Entity {
 
     public void setMatchAttributes(MatchAttributes matchAttributes) {
         this.matchAttributes = matchAttributes;
+    }
+
+    public MatchRelationships getMatchRelationships() {
+        return matchRelationships;
+    }
+
+    public void setMatchRelationships(MatchRelationships matchRelationships) {
+        this.matchRelationships = matchRelationships;
     }
 }

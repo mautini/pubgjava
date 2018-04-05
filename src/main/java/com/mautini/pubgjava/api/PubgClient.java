@@ -13,7 +13,9 @@ import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
 import com.mautini.pubgjava.model.match.Match;
+import com.mautini.pubgjava.model.match.MatchResponse;
 import com.mautini.pubgjava.model.player.Player;
+import com.mautini.pubgjava.model.roster.Roster;
 import com.mautini.pubgjava.model.status.Status;
 import com.mautini.pubgjava.util.RetrofitUtil;
 import com.typesafe.config.ConfigFactory;
@@ -87,6 +89,8 @@ public class PubgClient {
                             return context.deserialize(json, Match.class);
                         case "status":
                             return context.deserialize(json, Status.class);
+                        case "roster":
+                            return context.deserialize(json, Roster.class);
                         default:
                             return null;
                     }
@@ -134,9 +138,7 @@ public class PubgClient {
         return RetrofitUtil.getResponse(pubgInterface.getStatus()).getData();
     }
 
-    public Match getMatch(String shard, String id) throws PubgClientException {
-        DataHolder<Match> matchDataHolder = RetrofitUtil.getResponse(pubgInterface.getMatch(shard, id));
-
-        return matchDataHolder.getData();
+    public MatchResponse getMatch(String shard, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getMatch(shard, id));
     }
 }
