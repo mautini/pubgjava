@@ -9,6 +9,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
+import com.mautini.pubgjava.model.asset.Asset;
 import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
@@ -94,6 +95,8 @@ public class PubgClient {
                             return context.deserialize(json, Roster.class);
                         case "participant":
                             return context.deserialize(json, Participant.class);
+                        case "asset":
+                            return context.deserialize(json, Asset.class);
                         default:
                             return null;
                     }
