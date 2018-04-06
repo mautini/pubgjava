@@ -9,6 +9,7 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
+import com.mautini.pubgjava.model.Shard;
 import com.mautini.pubgjava.model.asset.Asset;
 import com.mautini.pubgjava.model.generic.Entity;
 import com.mautini.pubgjava.model.generic.response.ResponseDataHolder;
@@ -119,26 +120,28 @@ public class PubgClient {
     /**
      * Get the list of players matching the playerNames in the provided shard
      */
-    public ResponseDataListHolder<Player> getPlayersByNames(String shard, String... playersNames) throws PubgClientException {
+    public ResponseDataListHolder<Player> getPlayersByNames(Shard shard, String... playersNames)
+            throws PubgClientException {
+
         String players = Arrays.stream(playersNames).collect(Collectors.joining(","));
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard, players));
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard.toString(), players));
     }
 
     /**
      * Get the list of players matching the playerIds in the provided shard
      */
-    public ResponseDataListHolder<Player> getPlayersByIds(String shard, String... playerIds) throws PubgClientException {
+    public ResponseDataListHolder<Player> getPlayersByIds(Shard shard, String... playerIds) throws PubgClientException {
         String players = Arrays.stream(playerIds).collect(Collectors.joining(","));
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard, players));
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard.toString(), players));
     }
 
     /**
      * Get a player given its Id and shard
      */
-    public ResponseDataHolder<Player> getPlayer(String shard, String id) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
+    public ResponseDataHolder<Player> getPlayer(Shard shard, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getPlayer(shard.toString(), id));
     }
 
     /**
@@ -151,7 +154,7 @@ public class PubgClient {
     /**
      * Get a match given its Id and shard
      */
-    public MatchResponse getMatch(String shard, String id) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getMatch(shard, id));
+    public MatchResponse getMatch(Shard shard, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getMatch(shard.toString(), id));
     }
 }
