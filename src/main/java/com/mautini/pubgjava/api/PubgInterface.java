@@ -1,7 +1,8 @@
 package com.mautini.pubgjava.api;
 
 import com.mautini.pubgjava.model.generic.DataHolder;
-import com.mautini.pubgjava.model.generic.DataListHolder;
+import com.mautini.pubgjava.model.generic.response.ResponseDataHolder;
+import com.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.mautini.pubgjava.model.match.MatchResponse;
 import com.mautini.pubgjava.model.player.Player;
 import com.mautini.pubgjava.model.status.Status;
@@ -17,17 +18,17 @@ public interface PubgInterface {
 
     @Headers("@: Auth")
     @GET("/shards/{shard}/players")
-    Call<DataListHolder<Player>> getPlayersByNames(@Path("shard") String shard,
-                                                   @Query("filter[playerNames]") String playerNames);
+    Call<ResponseDataListHolder<Player>> getPlayersByNames(@Path("shard") String shard,
+                                                           @Query("filter[playerNames]") String playerNames);
 
     @Headers("@: Auth")
     @GET("/shards/{shard}/players")
-    Call<DataListHolder<Player>> getPlayersByIds(@Path("shard") String shard,
-                                                 @Query("filter[playerIds]") String playerIds);
+    Call<ResponseDataListHolder<Player>> getPlayersByIds(@Path("shard") String shard,
+                                                         @Query("filter[playerIds]") String playerIds);
 
     @Headers("@: Auth")
     @GET("/shards/{shard}/players/{id}")
-    Call<DataHolder<Player>> getPlayer(@Path("shard") String shard, @Path("id") String id);
+    Call<ResponseDataHolder<Player>> getPlayer(@Path("shard") String shard, @Path("id") String id);
 
     @GET("/status")
     Call<DataHolder<Status>> getStatus();

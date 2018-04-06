@@ -1,11 +1,11 @@
 package com.mautini.pubgjava.model.match;
 
-import com.mautini.pubgjava.model.generic.DataHolder;
 import com.mautini.pubgjava.model.generic.Entity;
+import com.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 
 import java.util.List;
 
-public class MatchResponse extends DataHolder<Match> {
+public class MatchResponse extends ResponseDataHolder<Match> {
 
     private List<Entity> included;
 

@@ -10,9 +10,9 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
 import com.mautini.pubgjava.model.asset.Asset;
-import com.mautini.pubgjava.model.generic.DataHolder;
-import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
+import com.mautini.pubgjava.model.generic.response.ResponseDataHolder;
+import com.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.mautini.pubgjava.model.match.Match;
 import com.mautini.pubgjava.model.match.MatchResponse;
 import com.mautini.pubgjava.model.participant.Participant;
@@ -42,6 +42,9 @@ public class PubgClient {
 
     private PubgInterface pubgInterface;
 
+    /**
+     * Create a new PUBG Client
+     */
     public PubgClient() {
         String apiKey = ConfigFactory.load().getString("apiKey");
 
@@ -113,28 +116,29 @@ public class PubgClient {
         pubgInterface = retrofit.create(PubgInterface.class);
     }
 
-    public List<Player> getPlayersByNames(String shard, String... playersNames) throws PubgClientException {
+    /**
+     * Get the list of players matching the playerNames in the provided shard
+     */
+    public ResponseDataListHolder<Player> getPlayersByNames(String shard, String... playersNames) throws PubgClientException {
         String players = Arrays.stream(playersNames).collect(Collectors.joining(","));
 
-        DataListHolder<Player> playersDataListHolder =
-                RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard, players));
-
-        return playersDataListHolder.getData();
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard, players));
     }
 
-    public List<Player> getPlayersByIds(String shard, String... playerIds) throws PubgClientException {
+    /**
+     * Get the list of players matching the playerIds in the provided shard
+     */
+    public ResponseDataListHolder<Player> getPlayersByIds(String shard, String... playerIds) throws PubgClientException {
         String players = Arrays.stream(playerIds).collect(Collectors.joining(","));
 
-        DataListHolder<Player> playersDataListHolder =
-                RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard, players));
-
-        return playersDataListHolder.getData();
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard, players));
     }
 
-    public Player getPlayer(String shard, String id) throws PubgClientException {
-        DataHolder<Player> playerDataHolder = RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
-
-        return playerDataHolder.getData();
+    /**
+     * Get a player given its Id and shard
+     */
+    public ResponseDataHolder<Player> getPlayer(String shard, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getPlayer(shard, id));
     }
 
     /**
@@ -144,6 +148,9 @@ public class PubgClient {
         return RetrofitUtil.getResponse(pubgInterface.getStatus()).getData();
     }
 
+    /**
+     * Get a match given its Id and shard
+     */
     public MatchResponse getMatch(String shard, String id) throws PubgClientException {
         return RetrofitUtil.getResponse(pubgInterface.getMatch(shard, id));
     }
