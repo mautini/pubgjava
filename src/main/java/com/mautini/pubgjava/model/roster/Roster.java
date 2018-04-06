@@ -21,4 +21,12 @@ public class Roster extends Entity {
     public void setRosterAttributes(RosterAttributes rosterAttributes) {
         this.rosterAttributes = rosterAttributes;
     }
+
+    public RosterRelationships getRosterRelationships() {
+        return rosterRelationships;
+    }
+
+    public void setRosterRelationships(RosterRelationships rosterRelationships) {
+        this.rosterRelationships = rosterRelationships;
+    }
 }
