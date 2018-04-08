@@ -7,6 +7,31 @@
     <groupId>com.github.mautini</groupId>
     <artifactId>pubg-java</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>PUBG Java</name>
+    <description>Java Wrapper for the PUBG API</description>
+    <url>https://github.com/mautini/pubgjava</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.fr.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Mautini</name>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/mautini/pubgjava.git</connection>
+        <developerConnection>scm:git:ssh://github.com:mautini/pubgjava.git</developerConnection>
+        <url>http://github.com/mautini/pubgjava/tree/master</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
