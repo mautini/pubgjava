@@ -10,8 +10,7 @@ PUBG-Java is a Java wrapper for the PUBG API. It provides an easy way to interac
 - Get the status of the API
 - Search for one or many players
 - Search for a match
-
-Currently the API doesn't support the telemetry
+- Access to the telemetry of a match
 
 ## Api call example
 To search for player(s) by name(s) :
@@ -40,6 +39,9 @@ To search for player(s) by name(s) :
         // Get a single match using its id
         MatchResponse match = pubgClient.getMatch(<shard>, <idMatch>);
         LOGGER.info(match.getData().getMatchAttributes().getGameMode());
+
+        Telemetry telemetry = pubgClient.getTelemetry(match);
+        LOGGER.info("{}", telemetry.getTelemetryEvents().size());
     }
 ```
 

@@ -1,6 +1,7 @@
 package com.mautini.pubgjava.model.telemetry.event;
 
 import com.google.gson.annotations.SerializedName;
+import com.mautini.pubgjava.model.telemetry.object.Common;
 
 import java.time.ZonedDateTime;
 
@@ -14,6 +15,9 @@ public abstract class TelemetryEvent {
 
     @SerializedName("_T")
     private String type;
+
+    // PC Only
+    private Common common;
 
     public TelemetryEvent() {
     }
@@ -40,5 +44,13 @@ public abstract class TelemetryEvent {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Common getCommon() {
+        return common;
+    }
+
+    public void setCommon(Common common) {
+        this.common = common;
     }
 }
