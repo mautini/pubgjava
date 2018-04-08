@@ -11,15 +11,19 @@ import com.google.gson.stream.JsonWriter;
 import com.mautini.pubgjava.exception.PubgClientException;
 import com.mautini.pubgjava.model.Shard;
 import com.mautini.pubgjava.model.asset.Asset;
+import com.mautini.pubgjava.model.generic.DataListHolder;
 import com.mautini.pubgjava.model.generic.Entity;
 import com.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.mautini.pubgjava.model.match.Match;
+import com.mautini.pubgjava.model.match.MatchRelationships;
 import com.mautini.pubgjava.model.match.MatchResponse;
 import com.mautini.pubgjava.model.participant.Participant;
 import com.mautini.pubgjava.model.player.Player;
 import com.mautini.pubgjava.model.roster.Roster;
 import com.mautini.pubgjava.model.status.Status;
+import com.mautini.pubgjava.model.telemetry.Telemetry;
+import com.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
 import com.mautini.pubgjava.util.RetrofitUtil;
 import com.typesafe.config.ConfigFactory;
 import okhttp3.OkHttpClient;
@@ -40,6 +44,8 @@ public class PubgClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(PubgClient.class);
 
     private static final String ACCEPT_HEADER = "application/vnd.api+json";
+
+    private static final String TELEMETRY_PACKAGE_NAME = "com.mautini.pubgjava.model.telemetry.event.";
 
     private PubgInterface pubgInterface;
 
@@ -105,6 +111,19 @@ public class PubgClient {
                             return null;
                     }
                 })
+                .registerTypeAdapter(TelemetryEvent.class, (JsonDeserializer<TelemetryEvent>) (json, typeOfT, context) -> {
+                    JsonObject jsonObject = json.getAsJsonObject();
+                    JsonElement jsonType = jsonObject.get("_T");
+                    String type = jsonType.getAsString();
+                    try {
+                        Class c = Class.forName(TELEMETRY_PACKAGE_NAME + type);
+                        return context.deserialize(json, c);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                    return null;
+                })
                 .create();
 
         // Build the interface to the API
@@ -156,5 +175,70 @@ public class PubgClient {
      */
     public MatchResponse getMatch(Shard shard, String id) throws PubgClientException {
         return RetrofitUtil.getResponse(pubgInterface.getMatch(shard.toString(), id));
+    }
+
+    /**
+     * Get the telemetry from the provided link
+     */
+    public Telemetry getTelemetry(String link) throws PubgClientException {
+        List<TelemetryEvent> telemetryEvents = RetrofitUtil.getResponse(pubgInterface.getTelemetry(link));
+
+        return new Telemetry(telemetryEvents);
+    }
+
+    /**
+     * Get the telemetry from a match
+     */
+    public Telemetry getTelemetry(MatchResponse matchResponse) throws PubgClientException {
+        Match match = matchResponse.getData();
+        if (match == null) {
+            throw new PubgClientException("Match is null in matchResponse");
+        }
+
+        MatchRelationships matchRelationships = match.getMatchRelationships();
+        if (matchRelationships == null) {
+            throw new PubgClientException("Unable to get match relationships");
+        }
+
+        DataListHolder<Asset> assetsHolder = matchRelationships.getAssets();
+        if (assetsHolder == null) {
+            throw new PubgClientException("Unable to get the assets");
+        }
+
+        List<Asset> assets = assetsHolder.getData();
+        if (assets == null || assets.isEmpty()) {
+            throw new PubgClientException("No assets for this match");
+        }
+
+        // The asset containing the id of the telemetry asset
+        Asset asset = assets.get(0);
+        String telemetryAssetId = asset.getId();
+        if (telemetryAssetId == null) {
+            throw new PubgClientException("The telemetry doesn't have an Id");
+        }
+
+        List<Entity> entities = matchResponse.getIncluded();
+        if (entities == null || entities.isEmpty()) {
+            throw new PubgClientException("Unable to get the entities for this match");
+        }
+
+        Asset telemetryAsset = entities.stream()
+                .filter(entity -> telemetryAssetId.equals(entity.getId())
+                        && entity instanceof Asset)
+                .map(Asset.class::cast)
+                .findFirst()
+                .orElseThrow(() -> new PubgClientException("Unable to get the asset with id " + telemetryAssetId));
+
+        if (telemetryAsset.getAssetAttributes() == null) {
+            throw new PubgClientException("No attributes for this asset");
+        }
+
+        String url = telemetryAsset.getAssetAttributes().getUrl();
+
+        if (url == null || url.isEmpty()) {
+            throw new PubgClientException("No url for this asset");
+        }
+
+        return getTelemetry(url);
     }
 }
