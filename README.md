@@ -6,6 +6,32 @@ PUBG-Java is a Java wrapper for the PUBG API. It provides an easy way to interac
 
 **Note that this library is still in active development and no stable version has been released yet. The API can change at anytime.**
 
+## Maven Dependency
+```xml
+    <dependency>
+        <groupId>com.github.mautini</groupId>
+        <artifactId>pubg-java</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+```
+
+As the library is still in development (SNAPSHOT), you have to add the following lines in your pom.xml
+```xml
+    <repositories>
+        <repository>
+            <id>snapshots-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+```
+This will allow maven to download the artifact from the development Nexus.
+
 ## Current functionalities
 - Get the status of the API
 - Search for one or many players
