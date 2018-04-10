@@ -68,7 +68,7 @@ public static final void main(String[] args) throws PubgClientException {
 
     Telemetry telemetry = pubgClient.getTelemetry(match);
     LOGGER.info("{}", telemetry.getTelemetryEvents().size());
-    }
+}
 ```
 
 ## Configuration
