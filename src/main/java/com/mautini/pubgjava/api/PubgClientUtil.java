@@ -12,6 +12,13 @@ import java.util.List;
 
 public class PubgClientUtil {
 
+    /**
+     * Get the url of the telemetry file associated with a matchResponse
+     *
+     * @param matchResponse the matchResponse for which we are looking for telemetry
+     * @return the url of the telemetry file
+     * @throws PubgClientException if we can't find the url in the matchResponse
+     */
     public static String getTelemetryUrl(MatchResponse matchResponse) throws PubgClientException {
         Match match = matchResponse.getData();
         if (match == null) {
