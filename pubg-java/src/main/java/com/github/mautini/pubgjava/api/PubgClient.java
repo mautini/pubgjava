@@ -10,8 +10,6 @@ import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.Telemetry;
-import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
-import com.github.mautini.pubgjava.util.RetrofitUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -71,12 +69,5 @@ public class PubgClient extends AbstractPubgClient {
         List<TelemetryEvent> telemetryEvents = RetrofitUtil.getResponse(pubgInterface.getTelemetry(link));
 
         return new Telemetry(telemetryEvents);
-    }
-
-    /**
-     * Get the telemetry from a match
-     */
-    public Telemetry getTelemetry(MatchResponse matchResponse) throws PubgClientException {
-        return getTelemetry(PubgClientUtil.getTelemetryUrl(matchResponse));
     }
 }

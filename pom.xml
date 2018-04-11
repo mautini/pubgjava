@@ -11,6 +11,7 @@
 
     <modules>
         <module>pubg-java</module>
+        <module>pubg-java-utils</module>
     </modules>
 
     <name>PUBG Java (Parent)</name>

@@ -11,8 +11,6 @@ import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.Telemetry;
-import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
-import com.github.mautini.pubgjava.util.RetrofitUtil;
 
 import java.util.Arrays;
 import java.util.List;
@@ -95,14 +93,5 @@ public class PubgClientAsync extends AbstractPubgClient {
         };
 
         RetrofitUtil.getResponseAsync(pubgInterface.getTelemetry(link), callbackWrapper);
-    }
-
-    /**
-     * Get the telemetry from a match
-     */
-    public void getTelemetry(ResponseCallback<Telemetry> responseCallback, MatchResponse matchResponse)
-            throws PubgClientException {
-
-        getTelemetry(responseCallback, PubgClientUtil.getTelemetryUrl(matchResponse));
     }
 }

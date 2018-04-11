@@ -1,4 +1,4 @@
-package com.github.mautini.pubgjava.api;
+package com.github.mautini.pubgjava;
 
 import com.github.mautini.pubgjava.exception.PubgClientException;
 import com.github.mautini.pubgjava.model.asset.Asset;
