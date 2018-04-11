@@ -5,11 +5,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.mautini</groupId>
-    <artifactId>pubg-java</artifactId>
+    <artifactId>pubg-java-parent</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>PUBG Java</name>
+    <modules>
+        <module>pubg-java</module>
+    </modules>
+
+    <name>PUBG Java (Parent)</name>
     <description>Java Wrapper for the PUBG API</description>
     <url>https://github.com/mautini/pubgjava</url>
 
@@ -40,6 +44,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <!-- Build plugins -->
+        <maven-compiler.version>3.7.0</maven-compiler.version>
         <nexus-staging.version>1.6.7</nexus-staging.version>
         <maven-source.version>2.2.1</maven-source.version>
         <maven-javadoc.version>2.9.1</maven-javadoc.version>
@@ -116,6 +121,19 @@
 
     <profiles>
         <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <!-- In development, compile the sample module -->
+            <modules>
+                <module>
+                    samples
+                </module>
+            </modules>
+        </profile>
+        <profile>
+            <!-- In release, don't build the sample module as we don't want to deploy it on repository -->
             <id>release</id>
             <build>
                 <plugins>
@@ -163,11 +181,13 @@
             </build>
         </profile>
     </profiles>
+    
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -186,5 +206,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
