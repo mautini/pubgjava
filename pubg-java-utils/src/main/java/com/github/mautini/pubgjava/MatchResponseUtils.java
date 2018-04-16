@@ -7,6 +7,7 @@ import com.github.mautini.pubgjava.model.roster.Roster;
 import com.github.mautini.pubgjava.util.CollectionsUtil;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MatchResponseUtils {
 
@@ -50,6 +51,16 @@ public class MatchResponseUtils {
         return MatchResponseUtils.getWinner(matchResponse);
     }
 
+    /**
+     * Return the list of winners for this match
+     *
+     * @return the winners (all the players of the winning roaster
+     * @throws PubgClientException if we can't get the winners
+     */
+    public List<Participant> getWinners() throws PubgClientException {
+        return MatchResponseUtils.getWinners(matchResponse);
+    }
+
     public static Roster getWinner(MatchResponse matchResponse) throws PubgClientException {
         List<Roster> rosters = MatchResponseUtils.getRosters(matchResponse);
         return rosters.stream()
@@ -73,5 +84,14 @@ public class MatchResponseUtils {
         }
 
         return CollectionsUtil.filterType(matchResponse.getIncluded(), Roster.class);
+    }
+
+    public static List<Participant> getWinners(MatchResponse matchResponse) throws PubgClientException {
+        List<String> participantsIds = RosterUtils.getParticipantsIds(MatchResponseUtils.getWinner(matchResponse));
+
+
+        return MatchResponseUtils.getParticipants(matchResponse).stream()
+                .filter(participant -> participantsIds.contains(participant.getId()))
+                .collect(Collectors.toList());
     }
 }
