@@ -1,13 +1,23 @@
 package com.github.mautini.pubgjava.model.telemetry.object;
 
+import com.google.gson.annotations.SerializedName;
+
 public enum Map {
-    DESERT_MAIN("Desert_Main"),
-    ERANGEL_MAIN("Erangel_Main");
+    @SerializedName("Desert_Main") DESERT_MAIN("Desert_Main"),
+    @SerializedName("Erangel_Main") ERANGEL_MAIN("Erangel_Main");
 
-    private final String text;
+    private String text;
 
-    Map(final String text) {
+    Map(String text) {
         this.text = text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
     }
 
     @Override

@@ -1,5 +1,7 @@
 package com.github.mautini.pubgjava.model.match;
 
+import com.github.mautini.pubgjava.model.telemetry.object.Map;
+
 import java.time.ZonedDateTime;
 
 public class MatchAttributes {
@@ -15,6 +17,8 @@ public class MatchAttributes {
     private String shardId;
 
     private String titleId;
+
+    private Map mapName;
 
     public MatchAttributes() {
     }
@@ -65,5 +69,13 @@ public class MatchAttributes {
 
     public void setTitleId(String titleId) {
         this.titleId = titleId;
+    }
+
+    public Map getMapName() {
+        return mapName;
+    }
+
+    public void setMapName(Map mapName) {
+        this.mapName = mapName;
     }
 }
