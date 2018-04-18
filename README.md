@@ -1,16 +1,28 @@
 # PUBG-Java
-A Java wrapper for the PlayerUnknown's Battlegrounds (PUBG) API.
+Java wrapper and utilities for the PlayerUnknown's Battlegrounds (PUBG) API.
 
 # Overview
-PUBG-Java is a Java wrapper for the PUBG API. It provides an easy way to interact with the official API
+This repository provides two libraries :
+- The first one, PUBG-Java is a Java wrapper for the PUBG API. It provides an easy way to interact with the official API.
+- The second one, PUBG-Java Utils provides methods and tools to manipulate the data retrieved from the API. This package never call directly the official PUBG API.
 
-**Note that this library is still in active development and no stable version has been released yet. The API can change at anytime.**
+**Note that theses libraries is still in active development and no stable version has been released yet. The API can change at anytime.**
 
-## Maven Dependency
+## Maven Dependencies
+- For the Java Wrapper
 ```xml
 <dependency>
     <groupId>com.github.mautini</groupId>
     <artifactId>pubg-java</artifactId>
+    <version>1.0-SNAPSHOT</version>
+</dependency>
+```
+
+- For the Utilities
+```xml
+<dependency>
+    <groupId>com.github.mautini</groupId>
+    <artifactId>pubg-java-utils</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
 ```
@@ -32,13 +44,15 @@ As the library is still in development (SNAPSHOT), you have to add the following
 ```
 This will allow maven to download the artifact from the development Nexus.
 
-## Current functionalities
+## PUBG-Java
+
+### Current functionalities
 - Get the status of the API
 - Search for one or many players
 - Search for a match
 - Access to the telemetry of a match
 
-## Api call example
+### Api call example
 To search for player(s) by name(s) :
 ```java
 public static final void main(String[] args) throws PubgClientException {
@@ -66,14 +80,31 @@ public static final void main(String[] args) throws PubgClientException {
     MatchResponse match = pubgClient.getMatch(<shard>, <idMatch>);
     LOGGER.info(match.getData().getMatchAttributes().getGameMode());
 
-    Telemetry telemetry = pubgClient.getTelemetry(match);
+    Telemetry telemetry = pubgClient.getTelemetry(<telemetryLinkUrl>);
     LOGGER.info("{}", telemetry.getTelemetryEvents().size());
 }
 ```
 
-## Configuration
+### Configuration
 The only thing you have to do is to set your PUBG Api Key (that you can find by registering here : https://developer.playbattlegrounds.com/) in the reference.conf file.
 You can also provide an application.conf file as the project use typesafe for the configuration (https://github.com/lightbend/config).
+
+## PUBG-Java utils
+
+### Functionnalities
+#### Match
+- Get the telemetry link for the match
+- Get all the participants of the match
+- Get all the rosters of the match
+- Get the winner (roster) of the match
+- Get the participants of the winning roster (winners)
+#### Player
+- Get the list of the match ids for a player
+#### Rosters
+- Get the ids of the participant in a roster
+
+### Known issues
+- Sometimes the PUBG API doesn't return a winner (roster with the "won" attribute set to true)
 
 ## Links
 - [PUBG developer portal](https://developer.playbattlegrounds.com/)
