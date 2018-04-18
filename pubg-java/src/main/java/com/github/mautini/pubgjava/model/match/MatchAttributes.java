@@ -1,6 +1,6 @@
 package com.github.mautini.pubgjava.model.match;
 
-import com.github.mautini.pubgjava.model.telemetry.object.Map;
+import com.github.mautini.pubgjava.model.Map;
 
 import java.time.ZonedDateTime;
 

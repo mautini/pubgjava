@@ -1,5 +1,7 @@
 package com.github.mautini.pubgjava.model.telemetry.object;
 
+import com.github.mautini.pubgjava.model.Map;
+
 public class Common {
 
     private String matchId;

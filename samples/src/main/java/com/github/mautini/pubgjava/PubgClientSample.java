@@ -27,6 +27,7 @@ public class PubgClientSample {
             try {
                 MatchResponse matchResponse = pubgClient.getMatch(Shard.PC_EU, match);
                 MatchResponseUtils matchResponseUtils = new MatchResponseUtils(matchResponse);
+                LOGGER.info(matchResponse.getData().getMatchAttributes().getMapName().toString());
                 List<Participant> winners = matchResponseUtils.getWinners();
                 winners.forEach(participant -> LOGGER.info(participant.getParticipantAttributes().getParticipantStats().getName()));
             } catch (PubgClientException exception) {
