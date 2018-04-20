@@ -1,16 +1,19 @@
 package com.github.mautini.pubgjava.api;
 
-import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
-import com.github.mautini.pubgjava.util.RetrofitUtil;
 import com.github.mautini.pubgjava.exception.PubgClientException;
 import com.github.mautini.pubgjava.model.Shard;
+import com.github.mautini.pubgjava.model.generic.DataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
+import com.github.mautini.pubgjava.model.sample.Sample;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.Telemetry;
+import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
+import com.github.mautini.pubgjava.util.RetrofitUtil;
 
+import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -69,5 +72,14 @@ public class PubgClient extends AbstractPubgClient {
         List<TelemetryEvent> telemetryEvents = RetrofitUtil.getResponse(pubgInterface.getTelemetry(link));
 
         return new Telemetry(telemetryEvents);
+    }
+
+    /**
+     * Get a list of sample matches.
+     * A starting search date (in UTC) can be provided. If it's set to null, the default time now() is used.
+     * Note that the date must be 24 hours prior to now, otherwise you will get an error.
+     */
+    public DataHolder<Sample> getSamples(Shard shard, Instant createdAtStart) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getSamples(shard.toString(), createdAtStart));
     }
 }
