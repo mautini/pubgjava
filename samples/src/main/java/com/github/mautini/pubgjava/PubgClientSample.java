@@ -22,14 +22,18 @@ public class PubgClientSample {
         LOGGER.info(playerList.get(0).getPlayerAttributes().getName());
 
         List<Season> seasonList = pubgClient.getSeasons(Shard.PC_NA).getData();
-        Season season = seasonList.stream()
-                .filter(current -> Boolean.TRUE.equals(current.getSeasonAttributes().getCurrentSeason()))
-                .findFirst()
-                .get();
+        Season currentSeason = SeasonUtils.getCurrentSeason(seasonList);
+        LOGGER.info(currentSeason.getId());
 
-        PlayerSeason playerSeason = pubgClient.getPlayerSeason(Shard.PC_NA, playerList.get(0).getId(), season.getId())
+
+        PlayerSeason playerSeason = pubgClient.getPlayerSeason(
+                Shard.PC_NA, playerList.get(0).getId(), currentSeason.getId()
+        )
                 .getData();
 
-        LOGGER.info(playerSeason.toString());
+        LOGGER.info(
+                "Wins : {}",
+                playerSeason.getPlayerSeasonAttributes().getGameModeStatsWrapper().getSoloFpp().getWins()
+        );
     }
 }
