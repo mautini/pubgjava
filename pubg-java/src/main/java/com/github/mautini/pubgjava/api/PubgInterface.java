@@ -6,14 +6,11 @@ import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder
 import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.sample.Sample;
+import com.github.mautini.pubgjava.model.season.Season;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
 import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Headers;
-import retrofit2.http.Path;
-import retrofit2.http.Query;
-import retrofit2.http.Url;
+import retrofit2.http.*;
 
 import java.time.Instant;
 import java.util.List;
@@ -47,6 +44,10 @@ public interface PubgInterface {
     @GET("/shards/{shard}/samples")
     Call<DataHolder<Sample>> getSamples(@Path("shard") String shard,
                                         @Query("filter[createdAt-start]") Instant createdAtStart);
+
+    @Headers("@: Auth")
+    @GET("/shards/{shard}/seasons")
+    Call<ResponseDataListHolder<Season>> getSeasons(@Path("shard") String shard);
 
     @GET
     Call<List<TelemetryEvent>> getTelemetry(@Url String url);
