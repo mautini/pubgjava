@@ -1,5 +1,6 @@
 package com.github.mautini.pubgjava.model.match;
 
+import com.github.mautini.pubgjava.model.GameMode;
 import com.github.mautini.pubgjava.model.Map;
 
 import java.time.ZonedDateTime;
@@ -10,7 +11,7 @@ public class MatchAttributes {
 
     private Integer duration;
 
-    private String gameMode;
+    private GameMode gameMode;
 
     private String patchVersion;
 
@@ -39,11 +40,11 @@ public class MatchAttributes {
         this.duration = duration;
     }
 
-    public String getGameMode() {
+    public GameMode getGameMode() {
         return gameMode;
     }
 
-    public void setGameMode(String gameMode) {
+    public void setGameMode(GameMode gameMode) {
         this.gameMode = gameMode;
     }
 

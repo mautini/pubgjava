@@ -5,6 +5,7 @@ import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
+import com.github.mautini.pubgjava.model.playerseason.PlayerSeason;
 import com.github.mautini.pubgjava.model.sample.Sample;
 import com.github.mautini.pubgjava.model.season.Season;
 import com.github.mautini.pubgjava.model.status.Status;
@@ -32,6 +33,11 @@ public interface PubgInterface {
     @Headers("@: Auth")
     @GET("/shards/{shard}/players/{id}")
     Call<ResponseDataHolder<Player>> getPlayer(@Path("shard") String shard, @Path("id") String id);
+
+    @Headers("@: Auth")
+    @GET("/shards/{shard}/players/{id}/seasons/{seasonId}")
+    Call<ResponseDataHolder<PlayerSeason>> getPlayerSeason(@Path("shard") String shard, @Path("id") String playerId,
+                                                           @Path("seasonId") String seasonId);
 
     @GET("/status")
     Call<DataHolder<Status>> getStatus();

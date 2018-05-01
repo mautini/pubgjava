@@ -7,6 +7,7 @@ import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
+import com.github.mautini.pubgjava.model.playerseason.PlayerSeason;
 import com.github.mautini.pubgjava.model.sample.Sample;
 import com.github.mautini.pubgjava.model.season.Season;
 import com.github.mautini.pubgjava.model.status.Status;
@@ -112,5 +113,16 @@ public class PubgClientAsync extends AbstractPubgClient {
      */
     public void getSeasons(ResponseCallback<ResponseDataListHolder<Season>> responseCallback, Shard shard) {
         RetrofitUtil.getResponseAsync(pubgInterface.getSeasons(shard.toString()), responseCallback);
+    }
+
+    /**
+     * Get season information for a single player.
+     */
+    public void getPlayerSeason(ResponseCallback<ResponseDataHolder<PlayerSeason>> responseCallback, Shard shard,
+                                String playerId, String seasonId) {
+
+        RetrofitUtil.getResponseAsync(
+                pubgInterface.getPlayerSeason(shard.toString(), playerId, seasonId), responseCallback
+        );
     }
 }

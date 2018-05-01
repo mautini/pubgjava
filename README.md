@@ -51,6 +51,8 @@ This will allow maven to download the artifact from the development Nexus.
 - Search for one or many players
 - Search for a match
 - Access to the telemetry of a match
+- List the seasons
+- Get the stats of a player for a season
 
 ### Api call example
 To search for player(s) by name(s) :
