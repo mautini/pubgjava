@@ -8,21 +8,12 @@ import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.roster.Roster;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializer;
-import com.google.gson.TypeAdapter;
+import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.typesafe.config.ConfigFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -33,8 +24,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public abstract class AbstractPubgClient {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(PubgClient.class);
 
     private static final String ACCEPT_HEADER = "application/vnd.api+json";
 
