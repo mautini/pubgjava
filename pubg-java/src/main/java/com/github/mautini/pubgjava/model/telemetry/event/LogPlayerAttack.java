@@ -4,14 +4,11 @@ import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.github.mautini.pubgjava.model.telemetry.object.Item;
 import com.github.mautini.pubgjava.model.telemetry.object.Vehicle;
 import com.google.gson.annotations.SerializedName;
-import com.github.mautini.pubgjava.model.telemetry.object.Character;
-import com.github.mautini.pubgjava.model.telemetry.object.Item;
-import com.github.mautini.pubgjava.model.telemetry.object.Vehicle;
 
 public class LogPlayerAttack extends TelemetryEvent {
 
-    @SerializedName(value = "attackerId", alternate = "AttackerId")
-    private Integer attackerId;
+    @SerializedName(value = "attackId", alternate = "AttackId")
+    private Integer attackId;
 
     @SerializedName(value = "attacker", alternate = "Attacker")
     private Character attacker;
@@ -29,12 +26,12 @@ public class LogPlayerAttack extends TelemetryEvent {
         super();
     }
 
-    public Integer getAttackerId() {
-        return attackerId;
+    public Integer getAttackId() {
+        return attackId;
     }
 
-    public void setAttackerId(Integer attackerId) {
-        this.attackerId = attackerId;
+    public void setAttackId(Integer attackId) {
+        this.attackId = attackId;
     }
 
     public Character getAttacker() {

@@ -1,6 +1,6 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
-public class LogPlayerLogout extends TelemetryEvent {
+public class LogPlayerLogout extends TelemetryEventAccount {
 
     public LogPlayerLogout() {
         super();

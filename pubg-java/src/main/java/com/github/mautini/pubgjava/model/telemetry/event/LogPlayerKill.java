@@ -2,9 +2,8 @@ package com.github.mautini.pubgjava.model.telemetry.event;
 
 import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.google.gson.annotations.SerializedName;
-import com.github.mautini.pubgjava.model.telemetry.object.Character;
 
-public class LogPlayerKill extends TelemetryEventCharacter {
+public class LogPlayerKill extends TelemetryEvent {
 
     @SerializedName(value = "attackId", alternate = "AttackId")
     private Integer attackId;
