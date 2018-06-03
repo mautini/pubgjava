@@ -45,6 +45,8 @@ public class ParticipantStats {
 
     private Integer roadKills;
 
+    private Double swimDistance;
+
     private Integer teamKills;
 
     private Double timeSurvived;
@@ -220,6 +222,14 @@ public class ParticipantStats {
 
     public void setRoadKills(Integer roadKills) {
         this.roadKills = roadKills;
+    }
+
+    public Double getSwimDistance() {
+        return swimDistance;
+    }
+
+    public void setSwimDistance(Double swimDistance) {
+        this.swimDistance = swimDistance;
     }
 
     public Integer getTeamKills() {
