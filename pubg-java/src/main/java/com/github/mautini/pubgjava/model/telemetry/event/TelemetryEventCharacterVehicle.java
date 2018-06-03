@@ -11,6 +11,10 @@ public abstract class TelemetryEventCharacterVehicle extends TelemetryEventChara
     @SerializedName("vehicle")
     private Vehicle vehicle;
 
+    // PC Only
+    @SerializedName("seatIndex")
+    private Integer seatIndex;
+
     public TelemetryEventCharacterVehicle() {
         super();
     }
@@ -21,5 +25,13 @@ public abstract class TelemetryEventCharacterVehicle extends TelemetryEventChara
 
     public void setVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
+    }
+
+    public Integer getSeatIndex() {
+        return seatIndex;
+    }
+
+    public void setSeatIndex(Integer seatIndex) {
+        this.seatIndex = seatIndex;
     }
 }

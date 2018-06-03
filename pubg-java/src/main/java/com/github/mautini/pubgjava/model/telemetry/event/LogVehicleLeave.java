@@ -8,10 +8,6 @@ public class LogVehicleLeave extends TelemetryEventCharacterVehicle {
     @SerializedName("rideDistance")
     private Float rideDistance;
 
-    // PC Only
-    @SerializedName("seatIndex")
-    private Integer seatIndex;
-
     public LogVehicleLeave() {
         super();
     }
@@ -22,13 +18,5 @@ public class LogVehicleLeave extends TelemetryEventCharacterVehicle {
 
     public void setRideDistance(Float rideDistance) {
         this.rideDistance = rideDistance;
-    }
-
-    public Integer getSeatIndex() {
-        return seatIndex;
-    }
-
-    public void setSeatIndex(Integer seatIndex) {
-        this.seatIndex = seatIndex;
     }
 }
