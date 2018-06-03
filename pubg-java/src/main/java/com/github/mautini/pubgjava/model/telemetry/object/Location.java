@@ -4,13 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class Location {
 
-    @SerializedName(value = "x", alternate = "X")
+    @SerializedName("x")
     private Float x;
 
-    @SerializedName(value = "y", alternate = "Y")
+    @SerializedName("y")
     private Float y;
 
-    @SerializedName(value = "z", alternate = "Z")
+    @SerializedName("z")
     private Float z;
 
     public Location() {

@@ -1,27 +1,27 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
-import com.google.gson.annotations.SerializedName;
 import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.github.mautini.pubgjava.model.telemetry.object.Vehicle;
+import com.google.gson.annotations.SerializedName;
 
 public class LogVehicleDestroy extends TelemetryEvent {
 
-    @SerializedName(value = "attackId", alternate = "AttackId")
+    @SerializedName("attackId")
     private Integer attackId;
 
-    @SerializedName(value = "attacker", alternate = "Attacker")
+    @SerializedName("attacker")
     private Character attacker;
 
-    @SerializedName(value = "vehicle", alternate = "Vehicle")
+    @SerializedName("vehicle")
     private Vehicle vehicle;
 
-    @SerializedName(value = "damageTypeCategory", alternate = "DamageTypeCategory")
+    @SerializedName("damageTypeCategory")
     private String damageTypeCategory;
 
-    @SerializedName(value = "damageCauseName", alternate = "DamageCauseName")
+    @SerializedName("damageCauseName")
     private String damageCauseName;
 
-    @SerializedName(value = "distance", alternate = "Distance")
+    @SerializedName("distance")
     private Float distance;
 
     public LogVehicleDestroy() {

@@ -5,22 +5,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class LogPlayerKill extends TelemetryEvent {
 
-    @SerializedName(value = "attackId", alternate = "AttackId")
+    @SerializedName("attackId")
     private Integer attackId;
 
-    @SerializedName(value = "killer", alternate = "Killer")
+    @SerializedName("killer")
     private Character killer;
 
-    @SerializedName(value = "victim", alternate = "Victim")
+    @SerializedName("victim")
     private Character victim;
 
-    @SerializedName(value = "damageTypeCategory", alternate = "DamageTypeCategory")
+    @SerializedName("damageTypeCategory")
     private String damageTypeCategory;
 
-    @SerializedName(value = "damageCauserName", alternate = "DamageCauserName")
+    @SerializedName("damageCauserName")
     private String damageCauserName;
 
-    @SerializedName(value = "distance", alternate = "Distance")
+    @SerializedName("distance")
     private Float distance;
 
     public LogPlayerKill() {

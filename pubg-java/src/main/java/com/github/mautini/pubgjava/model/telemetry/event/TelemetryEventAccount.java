@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 public abstract class TelemetryEventAccount extends TelemetryEvent {
 
-    @SerializedName(value = "accountId", alternate = "AccountId")
+    @SerializedName("accountId")
     private String accountId;
 
     public TelemetryEventAccount() {

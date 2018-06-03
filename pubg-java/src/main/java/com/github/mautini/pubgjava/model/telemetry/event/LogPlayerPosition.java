@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class LogPlayerPosition extends TelemetryEventCharacter {
 
-    @SerializedName(value = "elapsedTime", alternate = "ElapsedTime")
+    @SerializedName("elapsedTime")
     private Float elapsedTime;
 
-    @SerializedName(value = "numAlivePlayers", alternate = "NumAlivePlayers")
+    @SerializedName("numAlivePlayers")
     private Integer numAlivePlayers;
 
     public LogPlayerPosition() {

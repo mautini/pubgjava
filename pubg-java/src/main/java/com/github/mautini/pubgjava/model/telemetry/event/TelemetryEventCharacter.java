@@ -1,14 +1,14 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
-import com.google.gson.annotations.SerializedName;
 import com.github.mautini.pubgjava.model.telemetry.object.Character;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * TelemetryEvent including a character
  */
 public abstract class TelemetryEventCharacter extends TelemetryEvent {
 
-    @SerializedName(value = "character", alternate = "Character")
+    @SerializedName("character")
     private Character character;
 
     public TelemetryEventCharacter() {

@@ -2,7 +2,6 @@ package com.github.mautini.pubgjava.model.telemetry.event;
 
 import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.google.gson.annotations.SerializedName;
-import com.github.mautini.pubgjava.model.telemetry.object.Character;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
  */
 public abstract class TelemetryEventListCharacters extends TelemetryEvent {
 
-    @SerializedName(value = "characters", alternate = "Characters")
+    @SerializedName("characters")
     private List<Character> characters;
 
     public TelemetryEventListCharacters() {

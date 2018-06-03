@@ -4,37 +4,37 @@ import com.google.gson.annotations.SerializedName;
 
 public class GameState {
 
-    @SerializedName(value = "elapsedTime", alternate = "ElapsedTime")
+    @SerializedName("elapsedTime")
     private Integer elapsedTime;
 
-    @SerializedName(value = "numAliveTeams", alternate = "NumAliveTeams")
+    @SerializedName("numAliveTeams")
     private Integer numAliveTeams;
 
-    @SerializedName(value = "numJoinPlayers", alternate = "NumJoinPlayers")
+    @SerializedName("numJoinPlayers")
     private Integer numJoinPlayers;
 
-    @SerializedName(value = "numStartPlayers", alternate = "NumStartPlayers")
+    @SerializedName("numStartPlayers")
     private Integer numStartPlayers;
 
-    @SerializedName(value = "numAlivePlayers", alternate = "NumAlivePlayers")
+    @SerializedName("numAlivePlayers")
     private Integer numAlivePlayers;
 
-    @SerializedName(value = "safetyZonePosition", alternate = "SafetyZonePosition")
+    @SerializedName("safetyZonePosition")
     private Location safetyZonePosition;
 
-    @SerializedName(value = "safetyZoneRadius", alternate = "SafetyZoneRadius")
+    @SerializedName("safetyZoneRadius")
     private Float safetyZoneRadius;
 
-    @SerializedName(value = "poisonGasWarningPosition", alternate = "PoisonGasWarningPosition")
+    @SerializedName("poisonGasWarningPosition")
     private Location poisonGasWarningPosition;
 
-    @SerializedName(value = "poisonGasWarningRadius", alternate = "PoisonGasWarningRadius")
+    @SerializedName("poisonGasWarningRadius")
     private Float poisonGasWarningRadius;
 
-    @SerializedName(value = "redZonePosition", alternate = "RedZonePosition")
+    @SerializedName("redZonePosition")
     private Location redZonePosition;
 
-    @SerializedName(value = "redZoneRadius", alternate = "RedZoneRadius")
+    @SerializedName("redZoneRadius")
     private Float redZoneRadius;
 
     public GameState() {

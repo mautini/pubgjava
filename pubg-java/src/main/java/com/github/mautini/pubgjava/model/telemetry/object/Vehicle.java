@@ -4,16 +4,16 @@ import com.google.gson.annotations.SerializedName;
 
 public class Vehicle {
 
-    @SerializedName(value = "vehicleType", alternate = "VehicleType")
+    @SerializedName("vehicleType")
     private String vehicleType;
 
-    @SerializedName(value = "vehicleId", alternate = "VehicleId")
+    @SerializedName("vehicleId")
     private String vehicleId;
 
-    @SerializedName(value = "healthPercent", alternate = "HealthPercent")
+    @SerializedName("healthPercent")
     private Float healthPercent;
 
-    @SerializedName(value = "feulPercent", alternate = "FeulPercent")
+    @SerializedName("feulPercent")
     private Float feulPercent;
 
     public Vehicle() {

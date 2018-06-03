@@ -6,19 +6,19 @@ import java.util.List;
 
 public class Item {
 
-    @SerializedName(value = "itemId", alternate = "ItemId")
+    @SerializedName("itemId")
     private String itemId;
 
-    @SerializedName(value = "stackCount", alternate = "StackCount")
+    @SerializedName("stackCount")
     private Integer stackCount;
 
-    @SerializedName(value = "category", alternate = "Category")
+    @SerializedName("category")
     private String category;
 
-    @SerializedName(value = "subCategory", alternate = "SubCategory")
+    @SerializedName("subCategory")
     private String subCategory;
 
-    @SerializedName(value = "attachedItems", alternate = "AttachedItems")
+    @SerializedName("attachedItems")
     private List<String> attachedItems;
 
     public Item() {

@@ -2,11 +2,10 @@ package com.github.mautini.pubgjava.model.telemetry.event;
 
 import com.github.mautini.pubgjava.model.telemetry.object.GameState;
 import com.google.gson.annotations.SerializedName;
-import com.github.mautini.pubgjava.model.telemetry.object.GameState;
 
 public class LogGameStatePeriodic extends TelemetryEvent {
 
-    @SerializedName(value = "gameState", alternate = "GameState")
+    @SerializedName("gameState")
     private GameState gameState;
 
     public LogGameStatePeriodic() {

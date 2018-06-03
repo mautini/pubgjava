@@ -4,22 +4,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class Character {
 
-    @SerializedName(value = "name", alternate = "Name")
+    @SerializedName("name")
     private String name;
 
-    @SerializedName(value = "teamId", alternate = "TeamId")
+    @SerializedName("teamId")
     private String teamId;
 
-    @SerializedName(value = "health", alternate = "Health")
+    @SerializedName("health")
     private Float health;
 
-    @SerializedName(value = "location", alternate = "Location")
+    @SerializedName("location")
     private Location location;
 
-    @SerializedName(value = "ranking", alternate = "Ranking")
+    @SerializedName("ranking")
     private Integer ranking;
 
-    @SerializedName(value = "accountId", alternate = "AccountId")
+    @SerializedName("accountId")
     private String accountId;
 
     public Character() {

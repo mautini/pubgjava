@@ -6,13 +6,13 @@ import java.util.List;
 
 public class ItemPackage {
 
-    @SerializedName(value = "itemPackageId", alternate = "ItemPackageId")
+    @SerializedName("itemPackageId")
     private String itemPackageId;
 
-    @SerializedName(value = "location", alternate = "Location")
+    @SerializedName("location")
     private Location location;
 
-    @SerializedName(value = "items", alternate = "Items")
+    @SerializedName("items")
     private List<Item> items;
 
     public ItemPackage() {

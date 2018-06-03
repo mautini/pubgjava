@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class LogPlayerLogin extends TelemetryEventAccount {
 
-    @SerializedName(value = "result", alternate = "Result")
+    @SerializedName("result")
     private Boolean result;
 
-    @SerializedName(value = "errorMessage", alternate = "ErrorMessage")
+    @SerializedName("errorMessage")
     private String errorMessage;
 
     public LogPlayerLogin() {

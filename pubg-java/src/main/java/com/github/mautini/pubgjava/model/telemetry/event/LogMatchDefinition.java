@@ -4,10 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class LogMatchDefinition extends TelemetryEvent {
 
-    @SerializedName(value = "matchId", alternate = "MatchId")
+    @SerializedName("matchId")
     private String matchId;
 
-    @SerializedName(value = "pingQuality", alternate = "PingQuality")
+    @SerializedName("pingQuality")
     private String pingQuality;
 
     public LogMatchDefinition() {

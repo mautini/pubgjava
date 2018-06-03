@@ -2,14 +2,13 @@ package com.github.mautini.pubgjava.model.telemetry.event;
 
 import com.github.mautini.pubgjava.model.telemetry.object.Item;
 import com.google.gson.annotations.SerializedName;
-import com.github.mautini.pubgjava.model.telemetry.object.Item;
 
 public class LogItemAttach extends TelemetryEventCharacter {
 
-    @SerializedName(value = "parentItem", alternate = "ParentItem")
+    @SerializedName("parentItem")
     private Item parentItem;
 
-    @SerializedName(value = "childItem", alternate = "ChildItem")
+    @SerializedName("childItem")
     private Item childItem;
 
     public LogItemAttach() {

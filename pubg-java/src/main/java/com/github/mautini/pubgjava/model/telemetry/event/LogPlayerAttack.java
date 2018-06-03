@@ -7,19 +7,19 @@ import com.google.gson.annotations.SerializedName;
 
 public class LogPlayerAttack extends TelemetryEvent {
 
-    @SerializedName(value = "attackId", alternate = "AttackId")
+    @SerializedName("attackId")
     private Integer attackId;
 
-    @SerializedName(value = "attacker", alternate = "Attacker")
+    @SerializedName("attacker")
     private Character attacker;
 
-    @SerializedName(value = "attackType", alternate = "AttackType")
+    @SerializedName("attackType")
     private AttackType attackType;
 
-    @SerializedName(value = "weapon", alternate = "Weapon")
+    @SerializedName("weapon")
     private Item weapon;
 
-    @SerializedName(value = "vehicle", alternate = "Vehicle")
+    @SerializedName("vehicle")
     private Vehicle vehicle;
 
     public LogPlayerAttack() {

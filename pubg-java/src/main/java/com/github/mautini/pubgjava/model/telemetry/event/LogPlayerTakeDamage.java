@@ -2,29 +2,28 @@ package com.github.mautini.pubgjava.model.telemetry.event;
 
 import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.google.gson.annotations.SerializedName;
-import com.github.mautini.pubgjava.model.telemetry.object.Character;
 
 public class LogPlayerTakeDamage extends TelemetryEvent {
 
-    @SerializedName(value = "attackId", alternate = "AttackId")
+    @SerializedName("attackId")
     private Integer attackId;
 
-    @SerializedName(value = "attacker", alternate = "Attacker")
+    @SerializedName("attacker")
     private Character attacker;
 
-    @SerializedName(value = "victim", alternate = "Victim")
+    @SerializedName("victim")
     private Character victim;
 
-    @SerializedName(value = "damageTypeCategory", alternate = "DamageTypeCategory")
+    @SerializedName("damageTypeCategory")
     private String damageTypeCategory;
 
-    @SerializedName(value = "damageReason", alternate = "DamageReason")
+    @SerializedName("damageReason")
     private DamageReason damageReason;
 
-    @SerializedName(value = "damage", alternate = "Damage")
+    @SerializedName("damage")
     private Float damage;
 
-    @SerializedName(value = "damageCauserName", alternate = "DamageCauserName")
+    @SerializedName("damageCauserName")
     private String damageCauserName;
 
     public LogPlayerTakeDamage() {

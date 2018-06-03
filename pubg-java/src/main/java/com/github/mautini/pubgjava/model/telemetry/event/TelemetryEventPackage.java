@@ -1,14 +1,14 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
-import com.google.gson.annotations.SerializedName;
 import com.github.mautini.pubgjava.model.telemetry.object.ItemPackage;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * TelemetryEvent related to a package
  */
 public abstract class TelemetryEventPackage extends TelemetryEvent {
 
-    @SerializedName(value = "itemPackage", alternate = "ItemPackage")
+    @SerializedName("itemPackage")
     private ItemPackage itemPackage;
 
     public TelemetryEventPackage() {
