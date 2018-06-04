@@ -1,8 +1,10 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
+import com.google.gson.annotations.SerializedName;
+
 public enum AttackType {
-    RED_ZONE("RedZone"),
-    WEAPON("Weapon");
+    @SerializedName("RedZone") RED_ZONE("RedZone"),
+    @SerializedName("Weapon") WEAPON("Weapon");
 
     private final String text;
 
