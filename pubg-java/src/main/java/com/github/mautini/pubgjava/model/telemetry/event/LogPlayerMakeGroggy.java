@@ -3,7 +3,8 @@ package com.github.mautini.pubgjava.model.telemetry.event;
 import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.google.gson.annotations.SerializedName;
 
-public class LogPlayerTakeDamage extends TelemetryEvent {
+// PC Only
+public class LogPlayerMakeGroggy extends TelemetryEvent {
 
     @SerializedName("attackId")
     private Integer attackId;
@@ -17,18 +18,19 @@ public class LogPlayerTakeDamage extends TelemetryEvent {
     @SerializedName("damageTypeCategory")
     private String damageTypeCategory;
 
-    @SerializedName("damageReason")
-    private DamageReason damageReason;
-
-    // 1.0 damage = 1.0 health
-    // Net damage after armor; damage to health
-    @SerializedName("damage")
-    private Float damage;
-
     @SerializedName("damageCauserName")
     private String damageCauserName;
 
-    public LogPlayerTakeDamage() {
+    @SerializedName("distance")
+    private Float distance;
+
+    @SerializedName("isAttackerInVehicle")
+    private Boolean isAttackerInVehicle;
+
+    @SerializedName("dBNOId")
+    private int dBNOId;
+
+    public LogPlayerMakeGroggy() {
         super();
     }
 
@@ -64,27 +66,35 @@ public class LogPlayerTakeDamage extends TelemetryEvent {
         this.damageTypeCategory = damageTypeCategory;
     }
 
-    public DamageReason getDamageReason() {
-        return damageReason;
-    }
-
-    public void setDamageReason(DamageReason damageReason) {
-        this.damageReason = damageReason;
-    }
-
-    public Float getDamage() {
-        return damage;
-    }
-
-    public void setDamage(Float damage) {
-        this.damage = damage;
-    }
-
     public String getDamageCauserName() {
         return damageCauserName;
     }
 
     public void setDamageCauserName(String damageCauserName) {
         this.damageCauserName = damageCauserName;
+    }
+
+    public Float getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Float distance) {
+        this.distance = distance;
+    }
+
+    public Boolean getAttackerInVehicle() {
+        return isAttackerInVehicle;
+    }
+
+    public void setAttackerInVehicle(Boolean attackerInVehicle) {
+        isAttackerInVehicle = attackerInVehicle;
+    }
+
+    public int getdBNOId() {
+        return dBNOId;
+    }
+
+    public void setdBNOId(int dBNOId) {
+        this.dBNOId = dBNOId;
     }
 }

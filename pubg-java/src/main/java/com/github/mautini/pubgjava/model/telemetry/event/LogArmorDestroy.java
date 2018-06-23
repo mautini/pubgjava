@@ -4,6 +4,7 @@ import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.github.mautini.pubgjava.model.telemetry.object.Item;
 import com.google.gson.annotations.SerializedName;
 
+// PC only
 public class LogArmorDestroy extends TelemetryEvent {
 
     @SerializedName("attackId")
