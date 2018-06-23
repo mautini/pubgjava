@@ -8,7 +8,7 @@ This repository provides two libraries :
 
 **Note that theses libraries is still in active development and no stable version has been released yet. The API can change at anytime.**
 
-This library supports the version 1.2.0 of the PUBG Java API
+This library supports the version 1.3.1 of the PUBG Java API
 
 ## Maven Dependencies
 - For the Java Wrapper

@@ -1,5 +1,6 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
+import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.google.gson.annotations.SerializedName;
 
 public class LogPlayerRevive extends TelemetryEvent {
