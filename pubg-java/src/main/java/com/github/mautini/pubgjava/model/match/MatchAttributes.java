@@ -21,6 +21,8 @@ public class MatchAttributes {
 
     private Map mapName;
 
+    private Boolean isCustomMatch;
+
     public MatchAttributes() {
     }
 
@@ -78,5 +80,13 @@ public class MatchAttributes {
 
     public void setMapName(Map mapName) {
         this.mapName = mapName;
+    }
+
+    public Boolean getCustomMatch() {
+        return isCustomMatch;
+    }
+
+    public void setCustomMatch(Boolean customMatch) {
+        isCustomMatch = customMatch;
     }
 }
