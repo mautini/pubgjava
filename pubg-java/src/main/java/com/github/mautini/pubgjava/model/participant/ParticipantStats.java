@@ -31,7 +31,7 @@ public class ParticipantStats {
 
     private Integer lastWinPoints;
 
-    private Integer longestKill;
+    private Double longestKill;
 
     private Double mostDamage;
 
@@ -168,11 +168,11 @@ public class ParticipantStats {
         this.lastWinPoints = lastWinPoints;
     }
 
-    public Integer getLongestKill() {
+    public Double getLongestKill() {
         return longestKill;
     }
 
-    public void setLongestKill(Integer longestKill) {
+    public void setLongestKill(Double longestKill) {
         this.longestKill = longestKill;
     }
 
