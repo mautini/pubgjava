@@ -13,7 +13,6 @@ public abstract class TelemetryEvent {
     @SerializedName("_T")
     private String type;
 
-    // PC Only
     private Common common;
 
     public TelemetryEvent() {

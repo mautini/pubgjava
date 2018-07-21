@@ -4,7 +4,6 @@ import com.github.mautini.pubgjava.model.telemetry.object.Character;
 import com.github.mautini.pubgjava.model.telemetry.object.Vehicle;
 import com.google.gson.annotations.SerializedName;
 
-// PC only
 public class LogWheelDestroy extends TelemetryEvent {
 
     @SerializedName("attackId")

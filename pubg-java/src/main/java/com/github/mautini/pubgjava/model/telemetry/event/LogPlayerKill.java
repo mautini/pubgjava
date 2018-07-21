@@ -20,7 +20,6 @@ public class LogPlayerKill extends TelemetryEvent {
     @SerializedName("damageCauserName")
     private String damageCauserName;
 
-    // PC Only
     @SerializedName("damageReason")
     private String damageReason;
 
