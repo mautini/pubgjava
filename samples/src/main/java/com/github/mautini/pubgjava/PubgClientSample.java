@@ -51,5 +51,13 @@ public class PubgClientSample {
         String firstMatchId = tournament.getData().getTournamentRelationships().getMatches().getData().get(0).getId();
 
         LOGGER.info("First match id : {}", firstMatchId);
+
+        // Get info about rate limit
+        LOGGER.info(
+                "Rate Limit : Remaining {} of {} (reset at {})",
+                pubgClient.getRateLimitRemaining(),
+                pubgClient.getRateLimit(),
+                pubgClient.getRateLimitReset()
+        );
     }
 }

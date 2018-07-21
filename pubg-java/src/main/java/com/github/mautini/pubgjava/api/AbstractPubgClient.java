@@ -15,6 +15,7 @@ import com.google.gson.stream.JsonWriter;
 import com.typesafe.config.ConfigFactory;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -22,15 +23,28 @@ import java.io.IOException;
 import java.time.Instant;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public abstract class AbstractPubgClient {
+
+    private static final String RATE_LIMIT_HEADER = "X-Ratelimit-Limit";
+
+    private static final String RATE_LIMIT_REMAINING_HEADER = "X-Ratelimit-Remaining";
+
+    private static final String RATE_LIMIT_RESET_HEADER = "X-Ratelimit-Reset";
 
     private static final String ACCEPT_HEADER = "application/vnd.api+json";
 
     private static final String TELEMETRY_PACKAGE_NAME = "com.github.mautini.pubgjava.model.telemetry.event.";
 
     protected PubgInterface pubgInterface;
+
+    private int rateLimitRemaining;
+
+    private int rateLimit;
+
+    private Date rateLimitReset;
 
     /**
      * Create a new PUBG Client
@@ -54,7 +68,26 @@ public abstract class AbstractPubgClient {
                             }
                             builder.removeHeader("@");
 
-                            return chain.proceed(builder.build());
+                            // Execute the request
+                            Response response = chain.proceed(builder.build());
+
+                            // Set the rate limit headers if present
+                            String rateLimitHeader = response.header(RATE_LIMIT_HEADER);
+                            if (rateLimitHeader != null) {
+                                rateLimit = Integer.parseInt(rateLimitHeader);
+                            }
+
+                            String rateLimitRemainingHeader = response.header(RATE_LIMIT_REMAINING_HEADER);
+                            if (rateLimitRemainingHeader != null) {
+                                rateLimitRemaining = Integer.parseInt(rateLimitRemainingHeader);
+                            }
+
+                            String rateLimitResetHeader = response.header(RATE_LIMIT_RESET_HEADER);
+                            if (rateLimitResetHeader != null) {
+                                rateLimitReset = new Date(Long.parseLong(rateLimitResetHeader) * 1000);
+                            }
+
+                            return response;
                         }).build();
 
 
@@ -123,5 +156,15 @@ public abstract class AbstractPubgClient {
         pubgInterface = retrofit.create(PubgInterface.class);
     }
 
+    public int getRateLimitRemaining() {
+        return rateLimitRemaining;
+    }
 
+    public int getRateLimit() {
+        return rateLimit;
+    }
+
+    public Date getRateLimitReset() {
+        return rateLimitReset;
+    }
 }
