@@ -13,6 +13,7 @@ import com.github.mautini.pubgjava.model.season.Season;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.Telemetry;
 import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
+import com.github.mautini.pubgjava.model.tournament.Tournament;
 import com.github.mautini.pubgjava.util.RetrofitUtil;
 
 import java.time.Instant;
@@ -99,5 +100,19 @@ public class PubgClient extends AbstractPubgClient {
             throws PubgClientException {
 
         return RetrofitUtil.getResponse(pubgInterface.getPlayerSeason(shard.toString(), playerId, seasonId));
+    }
+
+    /**
+     * Get list of tournaments
+     */
+    public ResponseDataListHolder<Tournament> getTournaments() throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getTournaments());
+    }
+
+    /**
+     * Get a tournament by id
+     */
+    public ResponseDataHolder<Tournament> getTournament(String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getTournament(id));
     }
 }

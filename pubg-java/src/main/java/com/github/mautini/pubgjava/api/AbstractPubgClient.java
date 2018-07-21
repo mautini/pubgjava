@@ -8,6 +8,7 @@ import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.roster.Roster;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
+import com.github.mautini.pubgjava.model.tournament.Tournament;
 import com.google.gson.*;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
@@ -91,6 +92,8 @@ public abstract class AbstractPubgClient {
                             return context.deserialize(json, Participant.class);
                         case "asset":
                             return context.deserialize(json, Asset.class);
+                        case "tournament":
+                            return context.deserialize(json, Tournament.class);
                         default:
                             return null;
                     }

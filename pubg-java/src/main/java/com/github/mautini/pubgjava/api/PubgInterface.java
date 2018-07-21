@@ -10,6 +10,7 @@ import com.github.mautini.pubgjava.model.sample.Sample;
 import com.github.mautini.pubgjava.model.season.Season;
 import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.telemetry.event.TelemetryEvent;
+import com.github.mautini.pubgjava.model.tournament.Tournament;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -54,6 +55,14 @@ public interface PubgInterface {
     @Headers("@: Auth")
     @GET("/shards/{shard}/seasons")
     Call<ResponseDataListHolder<Season>> getSeasons(@Path("shard") String shard);
+
+    @Headers("@: Auth")
+    @GET("/tournaments")
+    Call<ResponseDataListHolder<Tournament>> getTournaments();
+
+    @Headers("@: Auth")
+    @GET("/tournaments/{id}")
+    Call<ResponseDataHolder<Tournament>> getTournament(@Path("id") String id);
 
     @GET
     Call<List<TelemetryEvent>> getTelemetry(@Url String url);

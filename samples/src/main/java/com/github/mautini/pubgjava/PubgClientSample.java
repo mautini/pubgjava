@@ -3,9 +3,12 @@ package com.github.mautini.pubgjava;
 import com.github.mautini.pubgjava.api.PubgClient;
 import com.github.mautini.pubgjava.exception.PubgClientException;
 import com.github.mautini.pubgjava.model.Shard;
+import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
+import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.playerseason.PlayerSeason;
 import com.github.mautini.pubgjava.model.season.Season;
+import com.github.mautini.pubgjava.model.tournament.Tournament;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,14 +21,16 @@ public class PubgClientSample {
     public static void main(String[] args) throws PubgClientException {
         PubgClient pubgClient = new PubgClient();
 
+        // Get shroud player
         List<Player> playerList = pubgClient.getPlayersByNames(Shard.PC_NA, "shroud").getData();
         LOGGER.info(playerList.get(0).getPlayerAttributes().getName());
 
+        // Get current season
         List<Season> seasonList = pubgClient.getSeasons(Shard.PC_NA).getData();
         Season currentSeason = SeasonUtils.getCurrentSeason(seasonList);
         LOGGER.info(currentSeason.getId());
 
-
+        // Get player season
         PlayerSeason playerSeason = pubgClient.getPlayerSeason(
                 Shard.PC_NA, playerList.get(0).getId(), currentSeason.getId()
         )
@@ -35,5 +40,16 @@ public class PubgClientSample {
                 "Wins : {}",
                 playerSeason.getPlayerSeasonAttributes().getGameModeStatsWrapper().getSoloFpp().getWins()
         );
+
+        // Get info about a tournament
+        ResponseDataListHolder<Tournament> tournaments = pubgClient.getTournaments();
+        String tournamentId = tournaments.getData().get(0).getId();
+
+        LOGGER.info("Tournament : {}", tournamentId);
+
+        ResponseDataHolder<Tournament> tournament = pubgClient.getTournament(tournamentId);
+        String firstMatchId = tournament.getData().getTournamentRelationships().getMatches().getData().get(0).getId();
+
+        LOGGER.info("First match id : {}", firstMatchId);
     }
 }
