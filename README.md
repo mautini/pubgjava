@@ -8,7 +8,7 @@ This repository provides two libraries :
 
 **Note that theses libraries is still in active development and no stable version has been released yet. The API can change at anytime.**
 
-This library supports the version 1.5.0 of the PUBG Java API
+This library supports the version 3.2.0 of the PUBG Java API
 
 ## Maven Dependencies
 - For the Java Wrapper
@@ -55,6 +55,7 @@ This will allow maven to download the artifact from the development Nexus.
 - Access to the telemetry of a match
 - List the seasons
 - Get the stats of a player for a season
+- Get information about tournaments
 
 ### Api call example
 To search for player(s) by name(s) :
@@ -84,10 +85,25 @@ public static final void main(String[] args) throws PubgClientException {
     MatchResponse match = pubgClient.getMatch(<shard>, <idMatch>);
     LOGGER.info(match.getData().getMatchAttributes().getGameMode());
 
+    // Get the telemetry for a match
     Telemetry telemetry = pubgClient.getTelemetry(<telemetryLinkUrl>);
     LOGGER.info("{}", telemetry.getTelemetryEvents().size());
 }
 ```
+
+For more example, you can check out the PubgClientSample.java class
+
+### Sync / Async
+You can perform the request to the API either synchronously or asynchronously using the classes PubgClient or PubgClientAsync
+
+### Rate Limit
+The PUBG API has a rate limit (currently it's 10 requests / minute). You can get information about this limit using the methods :
+```java
+getRateLimitRemaining()
+getRateLimit()
+getRateLimitReset()
+```
+in your PUBG client.
 
 ### Configuration
 The only thing you have to do is to set your PUBG Api Key (that you can find by registering here : https://developer.playbattlegrounds.com/) in the reference.conf file.
@@ -95,7 +111,7 @@ You can also provide an application.conf file as the project use typesafe for th
 
 ## PUBG-Java utils
 
-### Functionnalities
+### Functionalities
 #### Match
 - Get the telemetry link for the match
 - Get all the participants of the match

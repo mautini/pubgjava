@@ -156,14 +156,23 @@ public abstract class AbstractPubgClient {
         pubgInterface = retrofit.create(PubgInterface.class);
     }
 
+    /**
+     * Indicate how many requests you can perform before the api return an error
+     */
     public int getRateLimitRemaining() {
         return rateLimitRemaining;
     }
 
+    /**
+     * Get the rate limit (how many requests you can perform per minute)
+     */
     public int getRateLimit() {
         return rateLimit;
     }
 
+    /**
+     * Indicate when your rate limit will be reset
+     */
     public Date getRateLimitReset() {
         return rateLimitReset;
     }
