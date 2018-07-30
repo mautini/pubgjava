@@ -9,6 +9,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class PlayerSeasonRelationships {
 
+    private DataHolder<Player> player;
+
+    private DataListHolder<Match> matchesSolo;
+
+    @SerializedName("matchesSoloFPP")
+    private DataListHolder<Match> matchesSoloFpp;
+
+    private DataListHolder<Match> matchesDuo;
+
     @SerializedName("matchesDuoFPP")
     private DataListHolder<Match> matchesDuoFpp;
 
@@ -19,16 +28,39 @@ public class PlayerSeasonRelationships {
 
     private DataHolder<Season> season;
 
-    private DataHolder<Player> player;
-
-    private DataListHolder<Match> matchesSolo;
-
-    @SerializedName("matchesSoloFPP")
-    private DataListHolder<Match> matchesSoloFpp;
-
-    private DataListHolder<Match> matchesSoloDuo;
-
     public PlayerSeasonRelationships() {
+    }
+
+    public DataHolder<Player> getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(DataHolder<Player> player) {
+        this.player = player;
+    }
+
+    public DataListHolder<Match> getMatchesSolo() {
+        return matchesSolo;
+    }
+
+    public void setMatchesSolo(DataListHolder<Match> matchesSolo) {
+        this.matchesSolo = matchesSolo;
+    }
+
+    public DataListHolder<Match> getMatchesSoloFpp() {
+        return matchesSoloFpp;
+    }
+
+    public void setMatchesSoloFpp(DataListHolder<Match> matchesSoloFpp) {
+        this.matchesSoloFpp = matchesSoloFpp;
+    }
+
+    public DataListHolder<Match> getMatchesDuo() {
+        return matchesDuo;
+    }
+
+    public void setMatchesDuo(DataListHolder<Match> matchesDuo) {
+        this.matchesDuo = matchesDuo;
     }
 
     public DataListHolder<Match> getMatchesDuoFpp() {
@@ -61,38 +93,6 @@ public class PlayerSeasonRelationships {
 
     public void setSeason(DataHolder<Season> season) {
         this.season = season;
-    }
-
-    public DataHolder<Player> getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(DataHolder<Player> player) {
-        this.player = player;
-    }
-
-    public DataListHolder<Match> getMatchesSolo() {
-        return matchesSolo;
-    }
-
-    public void setMatchesSolo(DataListHolder<Match> matchesSolo) {
-        this.matchesSolo = matchesSolo;
-    }
-
-    public DataListHolder<Match> getMatchesSoloFpp() {
-        return matchesSoloFpp;
-    }
-
-    public void setMatchesSoloFpp(DataListHolder<Match> matchesSoloFpp) {
-        this.matchesSoloFpp = matchesSoloFpp;
-    }
-
-    public DataListHolder<Match> getMatchesSoloDuo() {
-        return matchesSoloDuo;
-    }
-
-    public void setMatchesSoloDuo(DataListHolder<Match> matchesSoloDuo) {
-        this.matchesSoloDuo = matchesSoloDuo;
     }
 }
 
