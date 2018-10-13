@@ -6,6 +6,9 @@ public class GameModeStats {
 
     private Integer assists;
 
+    // PC only
+    private Double bestRankPoint;
+
     private Integer boosts;
 
     @SerializedName("dBNOs")
@@ -16,6 +19,9 @@ public class GameModeStats {
     private Double damageDealt;
 
     private Integer days;
+
+    // PC only
+    private Integer dailyWins;
 
     private Integer headshotKills;
 
@@ -33,6 +39,9 @@ public class GameModeStats {
 
     private Double mostSurvivalTime;
 
+    // PC only
+    private Double rankPoints;
+
     private Integer revives;
 
     private Double rideDistance;
@@ -44,6 +53,9 @@ public class GameModeStats {
     private Integer roundsPlayed;
 
     private Integer suicides;
+
+    // PC only
+    private Double swimDistance;
 
     private Integer teamKills;
 
@@ -59,6 +71,9 @@ public class GameModeStats {
 
     private Integer weeklyKills;
 
+    // PC only
+    private Integer weeklyWins;
+
     private Integer wins;
 
     public GameModeStats() {
@@ -70,6 +85,14 @@ public class GameModeStats {
 
     public void setAssists(Integer assists) {
         this.assists = assists;
+    }
+
+    public Double getBestRankPoint() {
+        return bestRankPoint;
+    }
+
+    public void setBestRankPoint(Double bestRankPoint) {
+        this.bestRankPoint = bestRankPoint;
     }
 
     public Integer getBoosts() {
@@ -110,6 +133,14 @@ public class GameModeStats {
 
     public void setDays(Integer days) {
         this.days = days;
+    }
+
+    public Integer getDailyWins() {
+        return dailyWins;
+    }
+
+    public void setDailyWins(Integer dailyWins) {
+        this.dailyWins = dailyWins;
     }
 
     public Integer getHeadshotKills() {
@@ -176,6 +207,14 @@ public class GameModeStats {
         this.mostSurvivalTime = mostSurvivalTime;
     }
 
+    public Double getRankPoints() {
+        return rankPoints;
+    }
+
+    public void setRankPoints(Double rankPoints) {
+        this.rankPoints = rankPoints;
+    }
+
     public Integer getRevives() {
         return revives;
     }
@@ -222,6 +261,14 @@ public class GameModeStats {
 
     public void setSuicides(Integer suicides) {
         this.suicides = suicides;
+    }
+
+    public Double getSwimDistance() {
+        return swimDistance;
+    }
+
+    public void setSwimDistance(Double swimDistance) {
+        this.swimDistance = swimDistance;
     }
 
     public Integer getTeamKills() {
@@ -278,6 +325,14 @@ public class GameModeStats {
 
     public void setWeeklyKills(Integer weeklyKills) {
         this.weeklyKills = weeklyKills;
+    }
+
+    public Integer getWeeklyWins() {
+        return weeklyWins;
+    }
+
+    public void setWeeklyWins(Integer weeklyWins) {
+        this.weeklyWins = weeklyWins;
     }
 
     public Integer getWins() {

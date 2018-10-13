@@ -2,6 +2,7 @@ package com.github.mautini.pubgjava.model.match;
 
 import com.github.mautini.pubgjava.model.GameMode;
 import com.github.mautini.pubgjava.model.Map;
+import com.github.mautini.pubgjava.model.SeasonState;
 
 import java.time.ZonedDateTime;
 
@@ -14,6 +15,8 @@ public class MatchAttributes {
     private GameMode gameMode;
 
     private String patchVersion;
+
+    private SeasonState seasonState;
 
     private String shardId;
 
@@ -56,6 +59,14 @@ public class MatchAttributes {
 
     public void setPatchVersion(String patchVersion) {
         this.patchVersion = patchVersion;
+    }
+
+    public SeasonState getSeasonState() {
+        return seasonState;
+    }
+
+    public void setSeasonState(SeasonState seasonState) {
+        this.seasonState = seasonState;
     }
 
     public String getShardId() {

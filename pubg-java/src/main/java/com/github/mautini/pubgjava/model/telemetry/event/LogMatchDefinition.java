@@ -1,14 +1,18 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
+import com.github.mautini.pubgjava.model.SeasonState;
 import com.google.gson.annotations.SerializedName;
 
 public class LogMatchDefinition extends TelemetryEvent {
 
-    @SerializedName("matchId")
+    @SerializedName("MatchId")
     private String matchId;
 
-    @SerializedName("pingQuality")
+    @SerializedName("PingQuality")
     private String pingQuality;
+
+    @SerializedName("SeasonState")
+    private SeasonState seasonState;
 
     public LogMatchDefinition() {
         super();
@@ -28,5 +32,13 @@ public class LogMatchDefinition extends TelemetryEvent {
 
     public void setPingQuality(String pingQuality) {
         this.pingQuality = pingQuality;
+    }
+
+    public SeasonState getSeasonState() {
+        return seasonState;
+    }
+
+    public void setSeasonState(SeasonState seasonState) {
+        this.seasonState = seasonState;
     }
 }

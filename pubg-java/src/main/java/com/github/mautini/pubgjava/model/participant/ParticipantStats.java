@@ -37,6 +37,9 @@ public class ParticipantStats {
 
     private String playerId;
 
+    // PC only
+    private Double rankPoints;
+
     private Integer revives;
 
     private Double rideDistance;
@@ -186,6 +189,14 @@ public class ParticipantStats {
 
     public void setPlayerId(String playerId) {
         this.playerId = playerId;
+    }
+
+    public Double getRankPoints() {
+        return rankPoints;
+    }
+
+    public void setRankPoints(Double rankPoints) {
+        this.rankPoints = rankPoints;
     }
 
     public Integer getRevives() {
