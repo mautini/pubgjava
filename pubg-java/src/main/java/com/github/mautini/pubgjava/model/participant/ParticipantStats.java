@@ -21,8 +21,6 @@ public class ParticipantStats {
 
     private Integer killPlace;
 
-    private Double killPointsDelta;
-
     private Integer killStreaks;
 
     private Integer kills;
@@ -58,8 +56,6 @@ public class ParticipantStats {
     private Integer weaponsAcquired;
 
     private Integer winPlace;
-
-    private Double winPointsDelta;
 
     public ParticipantStats() {
     }
@@ -126,14 +122,6 @@ public class ParticipantStats {
 
     public void setKillPlace(Integer killPlace) {
         this.killPlace = killPlace;
-    }
-
-    public Double getKillPointsDelta() {
-        return killPointsDelta;
-    }
-
-    public void setKillPointsDelta(Double killPointsDelta) {
-        this.killPointsDelta = killPointsDelta;
     }
 
     public Integer getKillStreaks() {
@@ -278,13 +266,5 @@ public class ParticipantStats {
 
     public void setWinPlace(Integer winPlace) {
         this.winPlace = winPlace;
-    }
-
-    public Double getWinPointsDelta() {
-        return winPointsDelta;
-    }
-
-    public void setWinPointsDelta(Double winPointsDelta) {
-        this.winPointsDelta = winPointsDelta;
     }
 }

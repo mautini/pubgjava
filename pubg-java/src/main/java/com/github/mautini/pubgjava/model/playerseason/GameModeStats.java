@@ -21,8 +21,6 @@ public class GameModeStats {
 
     private Integer heals;
 
-    private Double killPoints;
-
     private Integer kills;
 
     private Double longestKill;
@@ -60,8 +58,6 @@ public class GameModeStats {
     private Integer weaponsAcquired;
 
     private Integer weeklyKills;
-
-    private Double winPoints;
 
     private Integer wins;
 
@@ -130,14 +126,6 @@ public class GameModeStats {
 
     public void setHeals(Integer heals) {
         this.heals = heals;
-    }
-
-    public Double getKillPoints() {
-        return killPoints;
-    }
-
-    public void setKillPoints(Double killPoints) {
-        this.killPoints = killPoints;
     }
 
     public Integer getKills() {
@@ -290,14 +278,6 @@ public class GameModeStats {
 
     public void setWeeklyKills(Integer weeklyKills) {
         this.weeklyKills = weeklyKills;
-    }
-
-    public Double getWinPoints() {
-        return winPoints;
-    }
-
-    public void setWinPoints(Double winPoints) {
-        this.winPoints = winPoints;
     }
 
     public Integer getWins() {
