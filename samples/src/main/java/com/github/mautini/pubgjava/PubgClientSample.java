@@ -9,6 +9,7 @@ import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.playerseason.PlayerSeason;
 import com.github.mautini.pubgjava.model.season.Season;
+import com.github.mautini.pubgjava.model.status.Status;
 import com.github.mautini.pubgjava.model.tournament.Tournament;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +53,9 @@ public class PubgClientSample {
         String firstMatchId = tournament.getData().getTournamentRelationships().getMatches().getData().get(0).getId();
 
         LOGGER.info("First match id : {}", firstMatchId);
+
+        Status status = pubgClient.getStatus();
+        LOGGER.info("Status : Type = {}, ID = {}", status.getType(), status.getId());
 
         // Get info about rate limit
         LOGGER.info(

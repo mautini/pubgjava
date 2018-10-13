@@ -7,6 +7,7 @@ public enum PlatformRegion {
     @SerializedName("xbox-eu") XBOX_EU("xbox-eu"),
     @SerializedName("xbox-na") XBOX_NA("xbox-na"),
     @SerializedName("xbox-oc") XBOX_OC("xbox-oc"),
+    @SerializedName("xbox-sa") XBOX_SA("xbox_sa"),
     @SerializedName("pc-krip") PC_KRJP("pc-krjp"),
     @SerializedName("pc-jp") PC_JP("pc-jp"),
     @SerializedName("pc-na") PC_NA("pc-na"),
