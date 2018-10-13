@@ -1,6 +1,7 @@
 package com.github.mautini.pubgjava.api;
 
 import com.github.mautini.pubgjava.exception.PubgClientException;
+import com.github.mautini.pubgjava.model.Platform;
 import com.github.mautini.pubgjava.model.PlatformRegion;
 import com.github.mautini.pubgjava.model.generic.DataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
@@ -99,11 +100,24 @@ public class PubgClient extends AbstractPubgClient {
 
     /**
      * Get season information for a single player.
+     * This method must be used for Xbox or PC seasons before 18/10/03.
+     * After this date, use {@link #getPlayerSeason(Platform, String, String)}
      */
     public ResponseDataHolder<PlayerSeason> getPlayerSeason(PlatformRegion platformRegion, String playerId,
                                                             String seasonId) throws PubgClientException {
 
         return RetrofitUtil.getResponse(pubgInterface.getPlayerSeason(platformRegion.toString(), playerId, seasonId));
+    }
+
+    /**
+     * Get season information for a single player.
+     * This method must be used for PC seasons after 18/10/03.
+     * Before this date, use {@link #getPlayerSeason(PlatformRegion, String, String)}
+     */
+    public ResponseDataHolder<PlayerSeason> getPlayerSeason(Platform platform, String playerId,
+                                                            String seasonId) throws PubgClientException {
+
+        return RetrofitUtil.getResponse(pubgInterface.getPlayerSeason(platform.toString(), playerId, seasonId));
     }
 
     /**
