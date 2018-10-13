@@ -21,6 +21,14 @@ public class ParticipantStats {
 
     private Integer killPlace;
 
+    // Deprecated for PC
+    @Deprecated
+    private Integer killPoints;
+
+    // Deprecated for PC
+    @Deprecated
+    private Double killPointsDelta;
+
     private Integer killStreaks;
 
     private Integer kills;
@@ -59,6 +67,14 @@ public class ParticipantStats {
     private Integer weaponsAcquired;
 
     private Integer winPlace;
+
+    // Deprecated for PC
+    @Deprecated
+    private Integer winPoints;
+
+    // Deprecated for PC
+    @Deprecated
+    private Double winPointsDelta;
 
     public ParticipantStats() {
     }
@@ -125,6 +141,26 @@ public class ParticipantStats {
 
     public void setKillPlace(Integer killPlace) {
         this.killPlace = killPlace;
+    }
+
+    @Deprecated
+    public Integer getKillPoints() {
+        return killPoints;
+    }
+
+    @Deprecated
+    public void setKillPoints(Integer killPoints) {
+        this.killPoints = killPoints;
+    }
+
+    @Deprecated
+    public Double getKillPointsDelta() {
+        return killPointsDelta;
+    }
+
+    @Deprecated
+    public void setKillPointsDelta(Double killPointsDelta) {
+        this.killPointsDelta = killPointsDelta;
     }
 
     public Integer getKillStreaks() {
@@ -277,5 +313,25 @@ public class ParticipantStats {
 
     public void setWinPlace(Integer winPlace) {
         this.winPlace = winPlace;
+    }
+
+    @Deprecated
+    public Integer getWinPoints() {
+        return winPoints;
+    }
+
+    @Deprecated
+    public void setWinPoints(Integer winPoints) {
+        this.winPoints = winPoints;
+    }
+
+    @Deprecated
+    public Double getWinPointsDelta() {
+        return winPointsDelta;
+    }
+
+    @Deprecated
+    public void setWinPointsDelta(Double winPointsDelta) {
+        this.winPointsDelta = winPointsDelta;
     }
 }

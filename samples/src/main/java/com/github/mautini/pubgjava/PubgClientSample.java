@@ -2,6 +2,7 @@ package com.github.mautini.pubgjava;
 
 import com.github.mautini.pubgjava.api.PubgClient;
 import com.github.mautini.pubgjava.exception.PubgClientException;
+import com.github.mautini.pubgjava.model.Platform;
 import com.github.mautini.pubgjava.model.PlatformRegion;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
@@ -32,7 +33,7 @@ public class PubgClientSample {
 
         // Get player season
         PlayerSeason playerSeason = pubgClient.getPlayerSeason(
-                PlatformRegion.PC_NA, playerList.get(0).getId(), currentSeason.getId()
+                Platform.STEAM, playerList.get(0).getId(), currentSeason.getId()
         )
                 .getData();
 

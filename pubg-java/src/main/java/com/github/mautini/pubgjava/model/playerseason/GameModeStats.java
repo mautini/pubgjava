@@ -27,6 +27,10 @@ public class GameModeStats {
 
     private Integer heals;
 
+    // Deprecated for PC
+    @Deprecated
+    private Double killPoints;
+
     private Integer kills;
 
     private Double longestKill;
@@ -73,6 +77,10 @@ public class GameModeStats {
 
     // PC only
     private Integer weeklyWins;
+
+    // Deprecated for PC
+    @Deprecated
+    private Double winPoints;
 
     private Integer wins;
 
@@ -157,6 +165,16 @@ public class GameModeStats {
 
     public void setHeals(Integer heals) {
         this.heals = heals;
+    }
+
+    @Deprecated
+    public Double getKillPoints() {
+        return killPoints;
+    }
+
+    @Deprecated
+    public void setKillPoints(Double killPoints) {
+        this.killPoints = killPoints;
     }
 
     public Integer getKills() {
@@ -333,6 +351,16 @@ public class GameModeStats {
 
     public void setWeeklyWins(Integer weeklyWins) {
         this.weeklyWins = weeklyWins;
+    }
+
+    @Deprecated
+    public Double getWinPoints() {
+        return winPoints;
+    }
+
+    @Deprecated
+    public void setWinPoints(Double winPoints) {
+        this.winPoints = winPoints;
     }
 
     public Integer getWins() {
