@@ -99,6 +99,13 @@ public class PubgClient extends AbstractPubgClient {
     }
 
     /**
+     * Get a list of available seasons.
+     */
+    public ResponseDataListHolder<Season> getSeasons(Platform platform) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getSeasons(platform.toString()));
+    }
+
+    /**
      * Get season information for a single player.
      * This method must be used for Xbox or PC seasons before 18/10/03.
      * After this date, use {@link #getPlayerSeason(Platform, String, String)}

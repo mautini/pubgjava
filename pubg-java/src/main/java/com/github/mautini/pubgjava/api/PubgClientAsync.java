@@ -1,6 +1,7 @@
 package com.github.mautini.pubgjava.api;
 
 import com.github.mautini.pubgjava.exception.PubgClientException;
+import com.github.mautini.pubgjava.model.Platform;
 import com.github.mautini.pubgjava.model.PlatformRegion;
 import com.github.mautini.pubgjava.model.generic.DataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
@@ -128,6 +129,15 @@ public class PubgClientAsync extends AbstractPubgClient {
                            PlatformRegion platformRegion) {
 
         RetrofitUtil.getResponseAsync(pubgInterface.getSeasons(platformRegion.toString()), responseCallback);
+    }
+
+    /**
+     * Get a list of available seasons
+     */
+    public void getSeasons(ResponseCallback<ResponseDataListHolder<Season>> responseCallback,
+                           Platform platform) {
+
+        RetrofitUtil.getResponseAsync(pubgInterface.getSeasons(platform.toString()), responseCallback);
     }
 
     /**

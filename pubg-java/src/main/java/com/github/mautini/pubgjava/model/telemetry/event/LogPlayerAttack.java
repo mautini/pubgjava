@@ -10,6 +10,8 @@ public class LogPlayerAttack extends TelemetryEvent {
     @SerializedName("attackId")
     private Integer attackId;
 
+    private Integer fireWeaponStackCount;
+
     @SerializedName("attacker")
     private Character attacker;
 
@@ -32,6 +34,14 @@ public class LogPlayerAttack extends TelemetryEvent {
 
     public void setAttackId(Integer attackId) {
         this.attackId = attackId;
+    }
+
+    public Integer getFireWeaponStackCount() {
+        return fireWeaponStackCount;
+    }
+
+    public void setFireWeaponStackCount(Integer fireWeaponStackCount) {
+        this.fireWeaponStackCount = fireWeaponStackCount;
     }
 
     public Character getAttacker() {
