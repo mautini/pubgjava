@@ -2,7 +2,7 @@ package com.github.mautini.pubgjava.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public enum Shard {
+public enum PlatformRegion {
     @SerializedName("xbox-as") XBOX_AS("xbox-as"),
     @SerializedName("xbox-eu") XBOX_EU("xbox-eu"),
     @SerializedName("xbox-na") XBOX_NA("xbox-na"),
@@ -20,7 +20,7 @@ public enum Shard {
 
     private final String text;
 
-    Shard(final String text) {
+    PlatformRegion(final String text) {
         this.text = text;
     }
 

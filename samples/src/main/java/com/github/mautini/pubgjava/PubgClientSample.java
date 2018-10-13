@@ -2,7 +2,7 @@ package com.github.mautini.pubgjava;
 
 import com.github.mautini.pubgjava.api.PubgClient;
 import com.github.mautini.pubgjava.exception.PubgClientException;
-import com.github.mautini.pubgjava.model.Shard;
+import com.github.mautini.pubgjava.model.PlatformRegion;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
 import com.github.mautini.pubgjava.model.player.Player;
@@ -22,17 +22,17 @@ public class PubgClientSample {
         PubgClient pubgClient = new PubgClient();
 
         // Get shroud player
-        List<Player> playerList = pubgClient.getPlayersByNames(Shard.PC_NA, "shroud").getData();
+        List<Player> playerList = pubgClient.getPlayersByNames(PlatformRegion.PC_NA, "shroud").getData();
         LOGGER.info(playerList.get(0).getPlayerAttributes().getName());
 
         // Get current season
-        List<Season> seasonList = pubgClient.getSeasons(Shard.PC_NA).getData();
+        List<Season> seasonList = pubgClient.getSeasons(PlatformRegion.PC_NA).getData();
         Season currentSeason = SeasonUtils.getCurrentSeason(seasonList);
         LOGGER.info(currentSeason.getId());
 
         // Get player season
         PlayerSeason playerSeason = pubgClient.getPlayerSeason(
-                Shard.PC_NA, playerList.get(0).getId(), currentSeason.getId()
+                PlatformRegion.PC_NA, playerList.get(0).getId(), currentSeason.getId()
         )
                 .getData();
 

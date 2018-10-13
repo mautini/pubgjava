@@ -69,20 +69,20 @@ public static final void main(String[] args) throws PubgClientException {
     LOGGER.info(status.getStatusAttributes().getVersion());
 
     // Get a list of players using their names in-game
-    List<Player> playerList = pubgClient.getPlayersByNames(<shard>, <name1>, <name2>, <name3>).getData();
+    List<Player> playerList = pubgClient.getPlayersByNames(<platformRegion>, <name1>, <name2>, <name3>).getData();
     LOGGER.info(playerList.get(0).getPlayerAttributes().getName());
 
     // Get a list of players using their id in-game
-    playerList = pubgClient.getPlayersByIds(<shard>, <id1>, <id2>, <id3>).getData();
+    playerList = pubgClient.getPlayersByIds(<platformRegion>, <id1>, <id2>, <id3>).getData();
     LOGGER.info(playerList.get(0).getPlayerAttributes().getName());
 
     // Get a single player using its id
-    Player player = pubgClient.getPlayer(<shard>, <idPlayer>).getData();
+    Player player = pubgClient.getPlayer(<platformRegion>, <idPlayer>).getData();
     LOGGER.info(player.getPlayerAttributes().getName());
     LOGGER.info(player.getPlayerRelationships().getMatches().getData().get(0).getId());
 
     // Get a single match using its id
-    MatchResponse match = pubgClient.getMatch(<shard>, <idMatch>);
+    MatchResponse match = pubgClient.getMatch(<platformRegion>, <idMatch>);
     LOGGER.info(match.getData().getMatchAttributes().getGameMode());
 
     // Get the telemetry for a match

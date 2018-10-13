@@ -1,7 +1,7 @@
 package com.github.mautini.pubgjava.api;
 
 import com.github.mautini.pubgjava.exception.PubgClientException;
-import com.github.mautini.pubgjava.model.Shard;
+import com.github.mautini.pubgjava.model.PlatformRegion;
 import com.github.mautini.pubgjava.model.generic.DataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
@@ -28,30 +28,32 @@ public class PubgClient extends AbstractPubgClient {
     }
 
     /**
-     * Get the list of players matching the playerNames in the provided shard
+     * Get the list of players matching the playerNames in the provided platformRegion
      */
-    public ResponseDataListHolder<Player> getPlayersByNames(Shard shard, String... playersNames)
+    public ResponseDataListHolder<Player> getPlayersByNames(PlatformRegion platformRegion, String... playersNames)
             throws PubgClientException {
 
-        String players = Arrays.stream(playersNames).collect(Collectors.joining(","));
+        String players = String.join(",", playersNames);
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(shard.toString(), players));
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(platformRegion.toString(), players));
     }
 
     /**
-     * Get the list of players matching the playerIds in the provided shard
+     * Get the list of players matching the playerIds in the provided platformRegion
      */
-    public ResponseDataListHolder<Player> getPlayersByIds(Shard shard, String... playerIds) throws PubgClientException {
-        String players = Arrays.stream(playerIds).collect(Collectors.joining(","));
+    public ResponseDataListHolder<Player> getPlayersByIds(PlatformRegion platformRegion, String... playerIds)
+            throws PubgClientException {
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(shard.toString(), players));
+        String players = String.join(",", playerIds);
+
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(platformRegion.toString(), players));
     }
 
     /**
-     * Get a player given its Id and shard
+     * Get a player given its Id and platformRegion
      */
-    public ResponseDataHolder<Player> getPlayer(Shard shard, String id) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getPlayer(shard.toString(), id));
+    public ResponseDataHolder<Player> getPlayer(PlatformRegion platformRegion, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getPlayer(platformRegion.toString(), id));
     }
 
     /**
@@ -62,10 +64,10 @@ public class PubgClient extends AbstractPubgClient {
     }
 
     /**
-     * Get a match given its Id and shard
+     * Get a match given its Id and platformRegion
      */
-    public MatchResponse getMatch(Shard shard, String id) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getMatch(shard.toString(), id));
+    public MatchResponse getMatch(PlatformRegion platformRegion, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getMatch(platformRegion.toString(), id));
     }
 
     /**
@@ -82,24 +84,26 @@ public class PubgClient extends AbstractPubgClient {
      * A starting search date (in UTC) can be provided. If it's set to null, the default time now() is used.
      * Note that the date must be 24 hours prior to now, otherwise you will get an error.
      */
-    public DataHolder<Sample> getSamples(Shard shard, Instant createdAtStart) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getSamples(shard.toString(), createdAtStart));
+    public DataHolder<Sample> getSamples(PlatformRegion platformRegion, Instant createdAtStart)
+            throws PubgClientException {
+
+        return RetrofitUtil.getResponse(pubgInterface.getSamples(platformRegion.toString(), createdAtStart));
     }
 
     /**
      * Get a list of available seasons.
      */
-    public ResponseDataListHolder<Season> getSeasons(Shard shard) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getSeasons(shard.toString()));
+    public ResponseDataListHolder<Season> getSeasons(PlatformRegion platformRegion) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getSeasons(platformRegion.toString()));
     }
 
     /**
      * Get season information for a single player.
      */
-    public ResponseDataHolder<PlayerSeason> getPlayerSeason(Shard shard, String playerId, String seasonId)
-            throws PubgClientException {
+    public ResponseDataHolder<PlayerSeason> getPlayerSeason(PlatformRegion platformRegion, String playerId,
+                                                            String seasonId) throws PubgClientException {
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayerSeason(shard.toString(), playerId, seasonId));
+        return RetrofitUtil.getResponse(pubgInterface.getPlayerSeason(platformRegion.toString(), playerId, seasonId));
     }
 
     /**
