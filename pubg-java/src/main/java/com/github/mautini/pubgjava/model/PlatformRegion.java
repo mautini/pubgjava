@@ -17,7 +17,8 @@ public enum PlatformRegion {
     @SerializedName("pc-kakao") PC_KAKAO("pc-kakao"),
     @SerializedName("pc-sea") PC_SEA("pc-sea"),
     @SerializedName("pc-sa") PC_SA("pc-sa"),
-    @SerializedName("pc-as") PC_AS("pc-as");
+    @SerializedName("pc-as") PC_AS("pc-as"),
+    @SerializedName("pc-tournament") PC_TOURNAMENT("pc-tournament");
 
     private final String text;
 
