@@ -3,6 +3,7 @@ package com.github.mautini.pubgjava.api;
 import com.github.mautini.pubgjava.model.generic.DataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
+import com.github.mautini.pubgjava.model.leaderboard.Leaderboard;
 import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.playerseason.PlayerSeason;
@@ -63,6 +64,11 @@ public interface PubgInterface {
     @Headers("@: Auth")
     @GET("/tournaments/{id}")
     Call<ResponseDataHolder<Tournament>> getTournament(@Path("id") String id);
+
+    @Headers("@: Auth")
+    @GET("/shards/{shard}/leaderboards/{gameMode}")
+    Call<ResponseDataHolder<Leaderboard>> getLeaderboard(@Path("shard") String shard, @Path("gameMode") String gameMode,
+                                                         @Query("page[number]") int pageNumber);
 
     @GET
     Call<List<TelemetryEvent>> getTelemetry(@Url String url);

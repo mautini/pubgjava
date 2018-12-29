@@ -1,11 +1,13 @@
 package com.github.mautini.pubgjava.api;
 
 import com.github.mautini.pubgjava.exception.PubgClientException;
+import com.github.mautini.pubgjava.model.GameMode;
 import com.github.mautini.pubgjava.model.Platform;
 import com.github.mautini.pubgjava.model.PlatformRegion;
 import com.github.mautini.pubgjava.model.generic.DataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataHolder;
 import com.github.mautini.pubgjava.model.generic.response.ResponseDataListHolder;
+import com.github.mautini.pubgjava.model.leaderboard.Leaderboard;
 import com.github.mautini.pubgjava.model.match.MatchResponse;
 import com.github.mautini.pubgjava.model.player.Player;
 import com.github.mautini.pubgjava.model.playerseason.PlayerSeason;
@@ -18,9 +20,7 @@ import com.github.mautini.pubgjava.model.tournament.Tournament;
 import com.github.mautini.pubgjava.util.RetrofitUtil;
 
 import java.time.Instant;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PubgClient extends AbstractPubgClient {
 
@@ -150,5 +150,14 @@ public class PubgClient extends AbstractPubgClient {
      */
     public ResponseDataHolder<Tournament> getTournament(String id) throws PubgClientException {
         return RetrofitUtil.getResponse(pubgInterface.getTournament(id));
+    }
+
+    /**
+     * Get the leaderboard for a platform and a game mode. The leaderboard is paginated (0-9)
+     */
+    public ResponseDataHolder<Leaderboard> getLeaderboard(Platform platform, GameMode gameMode, int page)
+            throws PubgClientException {
+
+        return RetrofitUtil.getResponse(pubgInterface.getLeaderboard(platform.toString(), gameMode.toString(), page));
     }
 }
