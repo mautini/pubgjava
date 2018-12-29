@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public enum Platform {
     @SerializedName("steam") STEAM("steam"),
+    @SerializedName("psn") PSN("psn"),
     @SerializedName("kakao") KAKAO("kakao"),
     @SerializedName("xbox") XBOX("xbox");
 
