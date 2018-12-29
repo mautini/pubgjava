@@ -106,6 +106,17 @@ public class PubgClient extends AbstractPubgClient {
     }
 
     /**
+     * Get lifetime stats (as of division.bro.official.pc-2018-01) for a single player (PC only)
+     */
+    public void getPlayerLifetimeStats(ResponseCallback<ResponseDataHolder<PlayerSeason>> responseCallback,
+                                       Platform platform, String playerId) {
+
+        RetrofitUtil.getResponseAsync(
+                pubgInterface.getPlayerSeason(platform.toString(), playerId, LIFETIME_STATS), responseCallback
+        );
+    }
+
+    /**
      * Get season information for a single player.
      * This method must be used for Xbox or PC seasons before 18/10/03.
      * After this date, use {@link #getPlayerSeason(Platform, String, String)}

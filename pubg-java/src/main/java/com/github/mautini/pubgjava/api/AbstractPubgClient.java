@@ -38,6 +38,9 @@ public abstract class AbstractPubgClient {
 
     private static final String TELEMETRY_PACKAGE_NAME = "com.github.mautini.pubgjava.model.telemetry.event.";
 
+    // Constant to get lifetime stats when used as the seasonId
+    protected static final String LIFETIME_STATS = "lifetime";
+
     protected PubgInterface pubgInterface;
 
     private int rateLimitRemaining;
