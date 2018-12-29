@@ -1,18 +1,14 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
-import com.google.gson.annotations.SerializedName;
+import com.github.mautini.pubgjava.model.telemetry.object.Vehicle;
 
 public class LogPlayerPosition extends TelemetryEventCharacter {
 
-    @SerializedName("elapsedTime")
     private Float elapsedTime;
 
-    @SerializedName("numAlivePlayers")
     private Integer numAlivePlayers;
 
-    public LogPlayerPosition() {
-        super();
-    }
+    private Vehicle vehicle;
 
     public Float getElapsedTime() {
         return elapsedTime;
@@ -28,5 +24,13 @@ public class LogPlayerPosition extends TelemetryEventCharacter {
 
     public void setNumAlivePlayers(Integer numAlivePlayers) {
         this.numAlivePlayers = numAlivePlayers;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
     }
 }
