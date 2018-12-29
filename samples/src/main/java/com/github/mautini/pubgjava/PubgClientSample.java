@@ -24,7 +24,7 @@ public class PubgClientSample {
         PubgClient pubgClient = new PubgClient();
 
         // Get shroud player
-        List<Player> playerList = pubgClient.getPlayersByNames(PlatformRegion.PC_NA, "shroud").getData();
+        List<Player> playerList = pubgClient.getPlayersByNames(Platform.STEAM, "shroud").getData();
         LOGGER.info(playerList.get(0).getPlayerAttributes().getName());
 
         // Get current season

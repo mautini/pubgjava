@@ -29,36 +29,36 @@ public class PubgClientAsync extends AbstractPubgClient {
     }
 
     /**
-     * Get the list of players matching the playerNames in the provided platformRegion
+     * Get the list of players matching the playerNames in the provided platform
      */
     public void getPlayersByNames(ResponseCallback<ResponseDataListHolder<Player>> responseCallback,
-                                  PlatformRegion platformRegion, String... playersNames) {
+                                  Platform platform, String... playersNames) {
 
         String players = String.join(",", playersNames);
         RetrofitUtil.getResponseAsync(
-                pubgInterface.getPlayersByNames(platformRegion.toString(), players), responseCallback
+                pubgInterface.getPlayersByNames(platform.toString(), players), responseCallback
         );
     }
 
     /**
-     * Get the list of players matching the playerIds in the provided platformRegion
+     * Get the list of players matching the playerIds in the provided platform
      */
     public void getPlayersByIds(ResponseCallback<ResponseDataListHolder<Player>> responseCallback,
-                                PlatformRegion platformRegion, String... playerIds) {
+                                Platform platform, String... playerIds) {
 
         String players = String.join(",", playerIds);
         RetrofitUtil.getResponseAsync(pubgInterface.getPlayersByIds(
-                platformRegion.toString(), players), responseCallback
+                platform.toString(), players), responseCallback
         );
     }
 
     /**
-     * Get a player given its Id and platformRegion
+     * Get a player given its Id and platform
      */
-    public void getPlayer(ResponseCallback<ResponseDataHolder<Player>> responseCallback, PlatformRegion platformRegion,
+    public void getPlayer(ResponseCallback<ResponseDataHolder<Player>> responseCallback, Platform platform,
                           String id) {
 
-        RetrofitUtil.getResponseAsync(pubgInterface.getPlayer(platformRegion.toString(), id), responseCallback);
+        RetrofitUtil.getResponseAsync(pubgInterface.getPlayer(platform.toString(), id), responseCallback);
     }
 
     /**

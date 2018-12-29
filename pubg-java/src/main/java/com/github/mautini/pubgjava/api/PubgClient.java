@@ -29,32 +29,32 @@ public class PubgClient extends AbstractPubgClient {
     }
 
     /**
-     * Get the list of players matching the playerNames in the provided platformRegion
+     * Get the list of players matching the playerNames in the provided platform
      */
-    public ResponseDataListHolder<Player> getPlayersByNames(PlatformRegion platformRegion, String... playersNames)
+    public ResponseDataListHolder<Player> getPlayersByNames(Platform platform, String... playersNames)
             throws PubgClientException {
 
         String players = String.join(",", playersNames);
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(platformRegion.toString(), players));
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByNames(platform.toString(), players));
     }
 
     /**
-     * Get the list of players matching the playerIds in the provided platformRegion
+     * Get the list of players matching the playerIds in the provided platform
      */
-    public ResponseDataListHolder<Player> getPlayersByIds(PlatformRegion platformRegion, String... playerIds)
+    public ResponseDataListHolder<Player> getPlayersByIds(Platform platform, String... playerIds)
             throws PubgClientException {
 
         String players = String.join(",", playerIds);
 
-        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(platformRegion.toString(), players));
+        return RetrofitUtil.getResponse(pubgInterface.getPlayersByIds(platform.toString(), players));
     }
 
     /**
-     * Get a player given its Id and platformRegion
+     * Get a player given its Id and platform
      */
-    public ResponseDataHolder<Player> getPlayer(PlatformRegion platformRegion, String id) throws PubgClientException {
-        return RetrofitUtil.getResponse(pubgInterface.getPlayer(platformRegion.toString(), id));
+    public ResponseDataHolder<Player> getPlayer(Platform platform, String id) throws PubgClientException {
+        return RetrofitUtil.getResponse(pubgInterface.getPlayer(platform.toString(), id));
     }
 
     /**
