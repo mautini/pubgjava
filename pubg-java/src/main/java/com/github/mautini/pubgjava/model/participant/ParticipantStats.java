@@ -46,6 +46,7 @@ public class ParticipantStats {
     private String playerId;
 
     // PC only
+    @Deprecated
     private Double rankPoints;
 
     private Integer revives;
@@ -227,10 +228,12 @@ public class ParticipantStats {
         this.playerId = playerId;
     }
 
+    @Deprecated
     public Double getRankPoints() {
         return rankPoints;
     }
 
+    @Deprecated
     public void setRankPoints(Double rankPoints) {
         this.rankPoints = rankPoints;
     }
