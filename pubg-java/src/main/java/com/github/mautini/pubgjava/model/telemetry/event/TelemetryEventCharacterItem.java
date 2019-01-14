@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName;
  */
 public abstract class TelemetryEventCharacterItem extends TelemetryEventCharacter {
 
-    @SerializedName("item")
     private Item item;
 
     public TelemetryEventCharacterItem() {
