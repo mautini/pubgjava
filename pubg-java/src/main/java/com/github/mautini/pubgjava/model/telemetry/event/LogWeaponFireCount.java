@@ -1,17 +1,20 @@
 package com.github.mautini.pubgjava.model.telemetry.event;
 
-/*
-From PUBG docs:
-
-[PC Only]
-
-"character": {Character},
-"weaponId":  string,
-"fireCount": int            // Increments of 10
-
+/**
+ * From PUBG docs:
+ *
+ * [PC Only]
+ *
+ * "character": {Character},
+ * "weaponId":  string,
+ * "fireCount": int            // Increments of 10
  */
+public class LogWeaponFireCount extends TelemetryEventCharacter {
 
-public class LogWeaponFireCount extends TelemetryEventCharacterItem {
+    public LogWeaponFireCount() {
+        super();
+    }
+
     private Integer fireCount;
 
     private String weaponId;
